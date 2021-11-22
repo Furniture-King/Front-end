@@ -13,6 +13,10 @@ module.exports = {
         'color-bg-lightBrown': '#847A68',
         'color-bg-light': '#F9F5EC',
         'color-bg-ultraLight': '#FCFAF7'
+      },
+      fontFamily: {
+        raleway: ['Raleway'],
+        poiretOne: ['"Poiret One"']
       }
     }
   },
