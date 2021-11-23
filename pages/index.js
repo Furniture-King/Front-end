@@ -7,6 +7,7 @@ import MainTitle from '../components/mainTitle'
 import NewsSections from '../components/newsSections'
 import PopularSection from '../components/poularSection'
 import HeroSection from '../components/heroSection'
+import ThumbnailsNavBar from '../components/thumbnailsNavBar'
 
 export default function Home() {
   return (
@@ -23,6 +24,8 @@ export default function Home() {
       <MainTitle text="Produits populaires" />
       <PopularSection />
       <HeroSection />
+      <MainTitle text="Retrouvez tout nos produits" />
+      <ThumbnailsNavBar />
     </div>
   )
 }
