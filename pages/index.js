@@ -6,6 +6,7 @@ import ProductNavBar from '../components/productNavBar'
 import MainTitle from '../components/mainTitle'
 import NewsSections from '../components/newsSections'
 import PopularSection from '../components/poularSection'
+import HeroSection from '../components/heroSection'
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <NewsSections />
       <MainTitle text="Produits populaires" />
       <PopularSection />
+      <HeroSection />
     </div>
   )
 }

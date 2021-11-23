@@ -71,7 +71,7 @@ const PopularSection = () => {
           href="/product_details"
           src="./images/images_commode/salik1.jpeg"
           title="Salik"
-          text="La collection NOBLE offre instantanément une touche d'élégance naturelle."
+          text="La collection Salik offre instantanément une touche d'élégance naturelle."
           price="490 €"
           numberOfRate="29"
         />
