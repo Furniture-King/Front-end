@@ -8,7 +8,7 @@ const NavBarItem = (props) => {
     <Link href={href} passHref>
       <a
         className="flex justify-center items-center px-5
-      font-poiretOne text-color-bg-light 
+      font-poiretOne text-color-bg-light text-2xl
       hover:bg-color-bg-light 
       hover:text-color-bg-lightBrown"
       >
@@ -25,7 +25,7 @@ NavBarItem.propTypes = {
 const ProductNavBar = () => {
   return (
     <div className="flex justify-center bg-color-bg-lightBrown h-16">
-      <nav className="flex justify-between h-16 w-3/6">
+      <nav className="flex justify-between h-16 w-8/12">
         <NavBarItem href="/products_chaise" text="Chaise" />
         <NavBarItem href="/products_canape" text="Canapé" />
         <NavBarItem href="/products_commode" text="Commode" />
