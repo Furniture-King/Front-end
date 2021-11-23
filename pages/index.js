@@ -9,6 +9,7 @@ import PopularSection from '../components/popularSection'
 import HeroSection from '../components/heroSection'
 import ThumbnailsNavBar from '../components/thumbnailsNavBar'
 import InfoSection from '../components/infoSection'
+import Footer from '../components/footer'
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
       <MainTitle text="Retrouvez tous nos produits" />
       <ThumbnailsNavBar />
       <InfoSection />
+      <Footer />
     </div>
   )
 }
