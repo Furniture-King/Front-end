@@ -5,10 +5,11 @@ import Carousel from '../components/carousel'
 import ProductNavBar from '../components/productNavBar'
 import MainTitle from '../components/mainTitle'
 import NewsSections from '../components/newsSections'
+import PopularSection from '../components/poularSection'
 
 export default function Home() {
   return (
-    <div>
+    <div className="">
       <Head>
         <title>Furniture King Web Store</title>
         <link rel="icon" href="/favicon.ico" />
@@ -19,6 +20,7 @@ export default function Home() {
       <MainTitle text="News & Tendances" />
       <NewsSections />
       <MainTitle text="Produits populaires" />
+      <PopularSection />
     </div>
   )
 }
