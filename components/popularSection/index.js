@@ -13,7 +13,7 @@ const Thumbnail = (props) => {
           <img src={src} />
         </figure>
         <div className="card-body items-center m-0 p-0">
-          <h2 className="font-poiretOne card-title mt-1 text-4xl">{title}</h2>
+          <h2 className="font-poiretOne card-title mt-10 text-4xl">{title}</h2>
           <p className="text-center text-sm">{text}</p>
           <p className="text-2xl font-bold my-2">{price}</p>
           <StarGenerator numberOfRate={numberOfRate} />

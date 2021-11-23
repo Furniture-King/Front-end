@@ -5,9 +5,10 @@ import Carousel from '../components/carousel'
 import ProductNavBar from '../components/productNavBar'
 import MainTitle from '../components/mainTitle'
 import NewsSections from '../components/newsSections'
-import PopularSection from '../components/poularSection'
+import PopularSection from '../components/popularSection'
 import HeroSection from '../components/heroSection'
 import ThumbnailsNavBar from '../components/thumbnailsNavBar'
+import InfoSection from '../components/infoSection'
 
 export default function Home() {
   return (
@@ -24,8 +25,9 @@ export default function Home() {
       <MainTitle text="Produits populaires" />
       <PopularSection />
       <HeroSection />
-      <MainTitle text="Retrouvez tout nos produits" />
+      <MainTitle text="Retrouvez tous nos produits" />
       <ThumbnailsNavBar />
+      <InfoSection />
     </div>
   )
 }
