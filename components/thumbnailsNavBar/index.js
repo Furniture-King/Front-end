@@ -10,7 +10,10 @@ const Card = (props) => {
         <figure>
           <img src={src} />
         </figure>
-        <div className="justify-center items-center card-body">
+        <div
+          className="justify-center items-center card-body hover:scale-105"
+          style={{ transition: '.3s' }}
+        >
           <h2 className="card-title text-4xl font-bold">{title}</h2>
         </div>
       </a>
