@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Link from 'next/link'
 
 import StarGenerator from '../misc_func/StarGenerator'
+import tempDB from '../tempDB/myTestDB'
 
 import { AiOutlineHeart } from 'react-icons/ai'
 import { BsBoxSeam } from 'react-icons/bs'
@@ -20,6 +21,11 @@ const Thumbnail = (props) => {
   const cartClick = (e) => {
     e.preventDefault()
     console.log('ajouter au panier!')
+    console.log(
+      tempDB.chaise.products.map((item) => {
+        return item.bigText1
+      })
+    )
   }
 
   return (

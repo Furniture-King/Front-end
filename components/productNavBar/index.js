@@ -28,7 +28,7 @@ const ProductNavBar = () => {
       <nav className="flex justify-between h-16 w-8/12">
         <NavBarItem href="/products_chaise" text="Chaise" />
         <NavBarItem href="/products_canape" text="Canapé" />
-        <NavBarItem href="/products_commode" text="Commode" />
+        <NavBarItem href="/products_rangement" text="Rangement" />
         <NavBarItem href="/products_luminaire" text="Luminaire" />
       </nav>
     </div>

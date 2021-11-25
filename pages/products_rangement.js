@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Commode = () => {
-  return <div>plop les Commodes !</div>
+  return <div>plop les Rangements !</div>
 }
 
 export default Commode
