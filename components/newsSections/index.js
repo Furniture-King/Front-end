@@ -28,7 +28,10 @@ const BigCard = (props) => {
           <p className="font-raleway text-justify">{product.text}</p>
           <div className="flex justify-between items-end">
             <div className="flex items-center">
-              <StarGenerator numberOfRate={product.totalVote} />
+              <StarGenerator
+                numberOfRate={product.totalVote}
+                numberOfStar={product.rating}
+              />
             </div>
             <p className="text-3xl font-black">{product.price} €</p>
           </div>

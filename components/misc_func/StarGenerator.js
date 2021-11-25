@@ -1,26 +1,79 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { RiStarFill, RiStarHalfFill, RiStarLine } from 'react-icons/ri'
+import { RiStarFill, RiStarLine } from 'react-icons/ri'
+// import { RiStarHalfFill } from 'react-icons/ri'
+
+const starsTransform = (stars) => {
+  switch (stars) {
+    case 1:
+      return (
+        <div className="flex">
+          <RiStarFill />
+          <RiStarLine />
+          <RiStarLine />
+          <RiStarLine />
+          <RiStarLine />
+        </div>
+      )
+    case 2:
+      return (
+        <div className="flex">
+          <RiStarFill />
+          <RiStarFill />
+          <RiStarLine />
+          <RiStarLine />
+          <RiStarLine />
+        </div>
+      )
+    case 3:
+      return (
+        <div className="flex">
+          <RiStarFill />
+          <RiStarFill />
+          <RiStarFill />
+          <RiStarLine />
+          <RiStarLine />
+        </div>
+      )
+    case 4:
+      return (
+        <div className="flex">
+          <RiStarFill />
+          <RiStarFill />
+          <RiStarFill />
+          <RiStarFill />
+          <RiStarLine />
+        </div>
+      )
+    case 5:
+      return (
+        <div className="flex">
+          <RiStarFill />
+          <RiStarFill />
+          <RiStarFill />
+          <RiStarFill />
+          <RiStarFill />
+        </div>
+      )
+    default:
+      console.log(`Sorry, we are out of all!!.`)
+  }
+}
 
 const StarGenerator = (props) => {
-  const { numberOfRate } = props
+  const { numberOfRate, numberOfStar } = props
 
   return (
     <div className="flex">
-      <div className="flex text-yellow-400">
-        <RiStarFill />
-        <RiStarFill />
-        <RiStarFill />
-        <RiStarHalfFill />
-        <RiStarLine />
-      </div>
+      <div className="text-yellow-400">{starsTransform(numberOfStar)}</div>
       <p className="pl-1 text-xs">({numberOfRate})</p>
     </div>
   )
 }
 StarGenerator.propTypes = {
-  numberOfRate: PropTypes.number
+  numberOfRate: PropTypes.number,
+  numberOfStar: PropTypes.number
 }
 
 export default StarGenerator
