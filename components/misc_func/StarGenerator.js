@@ -5,6 +5,7 @@ import { RiStarFill, RiStarHalfFill, RiStarLine } from 'react-icons/ri'
 
 const StarGenerator = (props) => {
   const { numberOfRate } = props
+
   return (
     <div className="flex">
       <div className="flex text-yellow-400">
@@ -19,7 +20,7 @@ const StarGenerator = (props) => {
   )
 }
 StarGenerator.propTypes = {
-  numberOfRate: PropTypes.string
+  numberOfRate: PropTypes.number
 }
 
 export default StarGenerator

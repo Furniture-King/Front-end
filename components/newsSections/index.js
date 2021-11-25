@@ -1,23 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 
 import StarGenerator from '../misc_func/StarGenerator'
+import tempDB from '../tempDB/myTestDB'
+
+const RandomProduct = () => {
+  let random = Math.floor(Math.random() * tempDB.chaise.products.length) + 1
+  const result = tempDB.chaise.products[random - 1]
+  return result
+}
 
 const BigCard = (props) => {
-  const { href, src, title, text } = props
+  const [product, setProducts] = useState([])
+
+  useEffect(() => {
+    setProducts(() => RandomProduct())
+  }, [setProducts])
+
+  const { href } = props
   return (
     <Link href={href} passHref>
       <a className="card text-center shadow-xl hover:shadow-md font-poiretOne h-full">
-        <img src={src} className="pt-10" />
+        <img src={product.src} className="pt-10" />
         <div className="card-body p-5 justify-between">
-          <div className="card-title text-4xl">{title}</div>
-          <p className="font-raleway text-justify">{text}</p>
+          <div className="card-title text-4xl">{product.title}</div>
+          <p className="font-raleway text-justify">{product.text}</p>
           <div className="flex justify-between items-end">
             <div className="flex items-center">
-              <StarGenerator numberOfRate="7" />
+              <StarGenerator numberOfRate={product.totalVote} />
             </div>
-            <p className="text-3xl font-black">119€</p>
+            <p className="text-3xl font-black">{product.price} €</p>
           </div>
         </div>
       </a>
@@ -25,10 +38,7 @@ const BigCard = (props) => {
   )
 }
 BigCard.propTypes = {
-  href: PropTypes.string,
-  src: PropTypes.string,
-  title: PropTypes.string,
-  text: PropTypes.string
+  href: PropTypes.string
 }
 
 const Card = (props) => {
@@ -62,12 +72,7 @@ const NewsSections = () => {
     <div className="flex mx-auto mt-10 w-8/12">
       <div className="flex justify-between">
         <div className="w-11/12 mr-10">
-          <BigCard
-            href="/product_details"
-            src="./images/images_Chaises/chaise_baron.jpg"
-            title="BARON"
-            text="Beatae tenetur excepturi aut pariatur est eos. Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old."
-          />
+          <BigCard href="/product_details" />
         </div>
         <div className="w-8/12 flex flex-col justify-between">
           <Card
