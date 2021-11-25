@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 // ICONS
 import { ImSearch } from 'react-icons/im'
@@ -7,17 +8,15 @@ import { MdAccountCircle, MdShoppingCart } from 'react-icons/md'
 
 const NavBar = () => {
   return (
-    <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-color-bg-darkBlue">
+    <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-color-bg-darkBlue  ">
       <div className="container px-4 mx-auto flex flex-wrap items-center justify-between ">
         <div className="w-full relative flex justify-between lg:w-auto  px-4 lg:static lg:block lg:justify-start">
-          <a
-            className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-color-font-white"
-            href="#"
-          >
-            Furniture K
-          </a>
+          <Link href="/">
+            <a className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-color-font-white">
+              Furniture K
+            </a>
+          </Link>
         </div>
-
         <div className="relative flex  sm:w-7/12 lg:w-1/4 flex-wrap text-color-font-white border-b border-opacity-25">
           <div className="flex mr-2">
             <span className="font-normal leading-snug flex text-center white-space-no-wrap text-sm bg-color-bg-darkBlue items-center pl-2 py-1 border-r-0 placeholder-gray-300">

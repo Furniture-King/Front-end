@@ -1,5 +1,6 @@
 import Head from 'next/head'
 
+import NavBar2 from '../components/navBar2'
 import NavBar from '../components/navbar'
 import Carousel from '../components/carousel'
 import ProductNavBar from '../components/productNavBar'
@@ -18,7 +19,7 @@ export default function Home() {
         <title>Furniture King Web Store</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavBar />
+      <NavBar2 />
       <Carousel />
       <ProductNavBar />
       <MainTitle text="News & Tendances" />

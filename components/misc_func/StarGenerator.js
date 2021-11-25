@@ -56,8 +56,6 @@ const starsTransform = (stars) => {
           <RiStarFill />
         </div>
       )
-    default:
-      console.log(`Sorry, we are out of all!!.`)
   }
 }
 

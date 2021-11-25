@@ -5,14 +5,28 @@ import Link from 'next/link'
 import StarGenerator from '../misc_func/StarGenerator'
 import tempDB from '../tempDB/myTestDB'
 
+import { AiOutlineHeart } from 'react-icons/ai'
+import { BsBoxSeam } from 'react-icons/bs'
+import { MdShoppingCart } from 'react-icons/md'
+
 const RandomProduct = () => {
   let random = Math.floor(Math.random() * tempDB.chaise.products.length) + 1
   const result = tempDB.chaise.products[random - 1]
   return result
 }
 
+const wishClick = (e) => {
+  e.preventDefault()
+  console.log('ajouter à la wish list!')
+}
+const cartClick = (e) => {
+  e.preventDefault()
+  console.log('ajouter au panier!')
+}
+
 const BigCard = (props) => {
   const [product, setProducts] = useState([])
+  const [isShown, setIsShown] = useState(false)
 
   useEffect(() => {
     setProducts(() => RandomProduct())
@@ -21,8 +35,32 @@ const BigCard = (props) => {
   const { href } = props
   return (
     <Link href={href} passHref>
-      <a className="card text-center shadow-xl hover:shadow-md font-poiretOne h-full">
-        <img src={product.src} className="pt-10" />
+      <a
+        className="card text-center shadow-xl hover:shadow-md font-poiretOne h-full"
+        onMouseEnter={() => setIsShown(true)}
+        onMouseLeave={() => setIsShown(false)}
+      >
+        {isShown ? (
+          <div>
+            <div
+              className="absolute top-4 left-5 hover:text-red-600"
+              onClick={wishClick}
+            >
+              <AiOutlineHeart size={20} />
+            </div>
+            <BsBoxSeam size={20} className="absolute top-12 left-5 " />
+            <MdShoppingCart
+              size={20}
+              className="absolute top-20 left-5 hover:text-green-600"
+              onClick={cartClick}
+            />
+          </div>
+        ) : null}
+        {isShown ? (
+          <img src={product.otherSrc[0]} className="pt-10" />
+        ) : (
+          <img src={product.src} className="pt-10" />
+        )}
         <div className="card-body p-5 justify-between">
           <div className="card-title text-4xl">{product.title}</div>
           <p className="font-raleway text-justify">{product.text}</p>
