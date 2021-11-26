@@ -110,19 +110,20 @@ Card.propTypes = {
 
 const NewsSections = () => {
   return (
-    <div className="flex mx-auto mt-10 w-8/12">
-      <div className="flex justify-between">
-        <div className="w-11/12 mr-10">
+    <div className="mx-auto mt-10 w-10/12 md:w-8/12">
+      <div className="flex flex-col md:flex-row">
+        <div className="w-full mr-10">
           <BigCard href="/product_details" />
         </div>
-        <div className="w-8/12 flex flex-col justify-between">
+        <div className="hidden md:w-8/12 lg:flex flex-col justify-between">
           <Card
             href="/products_chaise"
             src="./images/images_background/chaise_bg.jpeg"
             title="Chaise"
             text="Rerum reiciendis beatae."
           />
-          <div className="mt-10">
+
+          <div className="md:mt-5">
             <Card
               href="/products_canape"
               src="./images/images_background/canape_bg.jpg"
