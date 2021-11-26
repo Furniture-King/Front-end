@@ -6,7 +6,7 @@ const Card = (props) => {
   const { href, src, title } = props
   return (
     <Link href={href} passHref>
-      <a className=" card shadow-md hover:shadow-none image-full font-raleway w-60">
+      <a className=" card shadow-md hover:shadow-none image-full font-raleway  w-60 mt-3 xl:mt-0">
         <figure>
           <img src={src} />
         </figure>
@@ -28,7 +28,7 @@ Card.propTypes = {
 
 const ThumbnailsNavBar = () => {
   return (
-    <div className="flex justify-between flex-wrap mx-auto mt-10 w-8/12">
+    <div className="flex justify-center md:justify-between flex-wrap mx-auto mt-10 w-10/12 md:w-8/12 ">
       <Card
         href="/products_chaise"
         src="./images/images_background/chaise_bg.jpeg"
