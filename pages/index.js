@@ -28,7 +28,9 @@ export default function Home() {
       <NewsSections />
       <MainTitle text="Produits populaires" />
       <PopularSection />
-      <HeroSection />
+      <div className="hidden lg:block">
+        <HeroSection />
+      </div>
       <MainTitle text="Retrouvez tous nos produits" />
       <ThumbnailsNavBar />
       <InfoSection />
