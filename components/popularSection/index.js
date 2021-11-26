@@ -26,7 +26,7 @@ const Thumbnail = (props) => {
   return (
     <Link href={href} passHref>
       <a
-        className="rounded font-raleway p-5 mt-10 w-96 card shadow-xl hover:shadow-md"
+        className="rounded font-raleway p-5 mt-10  w-96 md:w-56 lg:w-80 xl:w-96 card shadow-xl hover:shadow-md"
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}
       >
@@ -77,8 +77,8 @@ const PopularSection = () => {
   const productsDisplayed = 2
 
   return (
-    <div className="mx-auto w-8/12">
-      <div className="flex flex-wrap justify-between">
+    <div className="mx-auto w-10/12 md:w-8/12">
+      <div className="flex flex-wrap justify-center md:justify-between">
         {/* LUMINAIRE SECTION */}
         {tempDB.luminaire.products.map((chairItem, index) => {
           if (index > productsDisplayed - 1) {
