@@ -8,7 +8,7 @@ import { FaCcMastercard, FaCcVisa, FaCcPaypal } from 'react-icons/fa'
 const InfoItem = (props) => {
   const { title, text, subText, icon, children } = props
   return (
-    <div className="flex flex-col items-center font-raleway  text-color-bg-darkBlue">
+    <div className="mt-10 lg:mt-0 flex flex-col items-center font-raleway  text-color-bg-darkBlue">
       <div>{icon}</div>
       <div>
         <p className="text-xl font-bold">{title}</p>
@@ -34,8 +34,8 @@ InfoItem.propTypes = {
 const InfoSection = () => {
   return (
     <div className="bg-color-bg-light mt-10">
-      <div className="mx-auto w-8/12 px-20">
-        <div className="flex justify-between flex-wrap pt-10 pb-5">
+      <div className="mx-auto w-full xl:w-8/12 px-20">
+        <div className="flex flex-col justify-center lg:flex-row xs:justify-between flex-wrap lg:pt-10 pb-5">
           <InfoItem
             icon={<MdCreditCardOff size={40} />}
             title="Paiment sécurisé"
