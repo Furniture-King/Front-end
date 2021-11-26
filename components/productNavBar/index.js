@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
+
+import { HiOutlineMenu } from 'react-icons/hi'
+import { AiFillLock } from 'react-icons/ai'
+import { MdShoppingCart } from 'react-icons/md'
 
 const NavBarItem = (props) => {
   const { href, text } = props
@@ -23,14 +27,72 @@ NavBarItem.propTypes = {
 }
 
 const ProductNavBar = () => {
+  const [show, setShow] = useState(false)
+
+  const toggleMenu = () => {
+    if (show) {
+      setShow(false)
+    } else {
+      setShow(true)
+    }
+  }
+
+  console.log(show)
+
   return (
-    <div className="flex justify-center bg-color-bg-lightBrown h-16">
-      <nav className="flex justify-between h-16 w-8/12">
-        <NavBarItem href="/products_chaise" text="Chaise" />
-        <NavBarItem href="/products_canape" text="Canapé" />
-        <NavBarItem href="/products_rangement" text="Rangement" />
-        <NavBarItem href="/products_luminaire" text="Luminaire" />
-      </nav>
+    <div>
+      <div className="flex items-center xs:justify-center bg-color-bg-lightBrown h-16">
+        <div className="flex items-center xs:hidden">
+          <button className="btn btn-square btn-ghost">
+            <HiOutlineMenu size={30} onClick={toggleMenu} />
+          </button>
+          <div className="flex md:mt-0">
+            <div className="avatar mx-5">
+              <div className="rounded-full w-10 h-10 m-1">
+                <img src="https://i.pravatar.cc/500?img=32" />
+              </div>
+            </div>
+            <a
+              className="px-3 py-2 flex flex-col items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
+              href="#"
+            >
+              <AiFillLock />
+              <span>Connexion</span>
+            </a>
+            <a
+              className="px-3 py-2 flex flex-col items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
+              href="#"
+            >
+              <MdShoppingCart />
+              <span className="ml-2">Panier</span>
+            </a>
+          </div>
+        </div>
+        <nav className="hidden xs:flex justify-between h-16 md:w-8/12">
+          <NavBarItem href="/products_chaise" text="Chaise" />
+          <NavBarItem href="/products_canape" text="Canapé" />
+          <NavBarItem href="/products_rangement" text="Rangement" />
+          <NavBarItem href="/products_luminaire" text="Luminaire" />
+        </nav>
+      </div>
+      <div className="xs:hidden">
+        {show ? (
+          <ul className=" bg-color-bg-lightBrown">
+            <li>
+              <NavBarItem href="/products_chaise" text="Chaise" />
+            </li>
+            <li>
+              <NavBarItem href="/products_canape" text="Canapé" />
+            </li>
+            <li>
+              <NavBarItem href="/products_rangement" text="Rangement" />
+            </li>
+            <li>
+              <NavBarItem href="/products_luminaire" text="Luminaire" />
+            </li>
+          </ul>
+        ) : null}
+      </div>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 import NavBar2 from '../components/navBar2'
-import NavBar from '../components/navbar'
+// import NavBar from '../components/navbar'
 import Carousel from '../components/carousel'
 import ProductNavBar from '../components/productNavBar'
 import MainTitle from '../components/mainTitle'
@@ -20,7 +20,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar2 />
-      <Carousel />
+      <div className="hidden lg:block">
+        <Carousel />
+      </div>
       <ProductNavBar />
       <MainTitle text="News & Tendances" />
       <NewsSections />

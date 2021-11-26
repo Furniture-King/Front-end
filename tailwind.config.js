@@ -17,6 +17,9 @@ module.exports = {
       fontFamily: {
         raleway: ['Raleway'],
         poiretOne: ['"Poiret One"']
+      },
+      screens: {
+        xs: '500px'
       }
     }
   },

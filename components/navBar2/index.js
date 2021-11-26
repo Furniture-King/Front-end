@@ -3,11 +3,12 @@ import Link from 'next/link'
 
 import { ImSearch } from 'react-icons/im'
 import { AiFillLock } from 'react-icons/ai'
-import { MdAccountCircle, MdShoppingCart } from 'react-icons/md'
+import { MdShoppingCart } from 'react-icons/md'
+// import { MdAccountCircle } from 'react-icons/md'
 
 const NavBar2 = () => {
   return (
-    <div className="navbar flex-col md:flex-row justify-center shadow-lg bg-color-bg-darkBlue text-neutral-content px-16">
+    <div className="navbar flex-col md:flex-row justify-center shadow-lg bg-color-bg-darkBlue text-neutral-content px-0 lg:px-16">
       <div className="flex-1 hidden px-2 mx-2 lg:flex">
         <Link href="/">
           <a className="text-xl font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-color-font-white">
@@ -20,10 +21,10 @@ const NavBar2 = () => {
         <input
           type="text"
           placeholder="Search"
-          className="input input-ghost w-96"
+          className="input input-ghost  w-80 sm:w-96 rounded-sm"
         />
       </div>
-      <div className="flex mt-5 md:mt-0">
+      <div className="hidden xs:flex mt-5 md:mt-0">
         <div className="avatar mx-5">
           <div className="rounded-full w-10 h-10 m-1">
             <img src="https://i.pravatar.cc/500?img=32" />
