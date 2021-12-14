@@ -41,7 +41,7 @@ const ProductNavBar = () => {
     <div>
       <div className="flex items-center xs:justify-center bg-color-bg-lightBrown h-16">
         <div className="flex items-center xs:hidden">
-          <button className="btn btn-square btn-ghost">
+          <button className="btn btn-square btn-ghost ">
             <HiOutlineMenu size={30} onClick={toggleMenu} />
           </button>
           <div className="flex md:mt-0">
@@ -75,7 +75,7 @@ const ProductNavBar = () => {
       </div>
       <div className="xs:hidden shadow-xl">
         {show ? (
-          <ul className=" bg-color-bg-lightBrown">
+          <ul className=" bg-color-bg-lightBrown ">
             <li>
               <NavBarItem href="/products_chaise" text="Chaise" />
             </li>
