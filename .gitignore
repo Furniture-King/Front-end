@@ -34,3 +34,5 @@ yarn-error.log*
 .vercel
 
 canapes.json
+luminaire.json
+rangement.json

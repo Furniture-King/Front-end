@@ -3,17 +3,12 @@ import PropTypes from 'prop-types'
 import Link from 'next/link'
 
 import StarGenerator from '../misc_func/StarGenerator'
-import tempDB from '../tempDB/myTestDB'
+import { getAllMagic } from '../misc_func/gettAll'
+// import tempDB from '../tempDB/myTestDB'
 
 import { AiOutlineHeart } from 'react-icons/ai'
 import { BsBoxSeam } from 'react-icons/bs'
 import { MdShoppingCart } from 'react-icons/md'
-
-const RandomProduct = () => {
-  let random = Math.floor(Math.random() * tempDB.chaise.products.length) + 1
-  const result = tempDB.chaise.products[random - 1]
-  return result
-}
 
 const wishClick = (e) => {
   e.preventDefault()
@@ -24,15 +19,19 @@ const cartClick = (e) => {
   console.log('ajouter au panier!')
 }
 
+const RandomProduct = Math.floor(Math.random() * 15)
+
 const BigCard = (props) => {
-  const [product, setProducts] = useState([])
+  const { href } = props
+  // const [product, setProducts] = useState([])
   const [isShown, setIsShown] = useState(false)
+  const [value, setValue] = useState({})
 
   useEffect(() => {
-    setProducts(() => RandomProduct())
-  }, [setProducts])
+    getAllMagic(setValue, 'chaises')
+  }, [])
+  // console.log(value.products ? value.products.map((item) => item.title) : null)
 
-  const { href } = props
   return (
     <Link href={href} passHref>
       <a
@@ -56,24 +55,37 @@ const BigCard = (props) => {
             />
           </div>
         ) : null}
-        {isShown ? (
-          <img src={product.otherSrc[0]} className="pt-10" />
-        ) : (
-          <img src={product.src} className="pt-10" />
-        )}
-        <div className="card-body p-5 justify-between">
-          <div className="card-title text-4xl">{product.title}</div>
-          <p className="font-raleway text-justify">{product.text}</p>
-          <div className="flex justify-between items-end">
-            <div className="flex items-center">
-              <StarGenerator
-                numberOfRate={product.totalVote}
-                numberOfStar={product.rating}
-              />
+        {value.products ? (
+          isShown ? (
+            <img
+              src={value.products[RandomProduct].otherSrc[0]}
+              className="pt-10"
+            />
+          ) : (
+            <img src={value.products[RandomProduct].src} className="pt-10" />
+          )
+        ) : null}
+        {value.products ? (
+          <div className="card-body p-5 justify-between">
+            <div className="card-title text-4xl">
+              {value.products[RandomProduct].title}
             </div>
-            <p className="text-3xl font-black">{product.price} €</p>
+            <p className="font-raleway text-justify">
+              {value.products[RandomProduct].text}
+            </p>
+            <div className="flex justify-between items-end">
+              <div className="flex items-center">
+                <StarGenerator
+                  numberOfRate={value.products[RandomProduct].totalVote}
+                  numberOfStar={value.products[RandomProduct].rating}
+                />
+              </div>
+              <p className="text-3xl font-black">
+                {value.products[RandomProduct].price} €
+              </p>
+            </div>
           </div>
-        </div>
+        ) : null}
       </a>
     </Link>
   )
