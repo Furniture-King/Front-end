@@ -4,7 +4,6 @@ import Link from 'next/link'
 
 import StarGenerator from '../misc_func/StarGenerator'
 import { getAllMagic } from '../misc_func/gettAll'
-// import tempDB from '../tempDB/myTestDB'
 
 import { AiOutlineHeart } from 'react-icons/ai'
 import { BsBoxSeam } from 'react-icons/bs'
@@ -23,7 +22,6 @@ const RandomProduct = Math.floor(Math.random() * 15)
 
 const BigCard = (props) => {
   const { href } = props
-  // const [product, setProducts] = useState([])
   const [isShown, setIsShown] = useState(false)
   const [value, setValue] = useState({})
 
