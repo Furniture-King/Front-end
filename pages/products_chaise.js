@@ -1,29 +1,26 @@
-import Head from 'next/head'
+import React, { useState, useEffect } from 'react'
 
-import NavBar2 from '../components/navBar2'
-import Carousel from '../components/carousel'
-import ProductNavBar from '../components/productNavBar'
+import ProductsPageTemplate from '../components/produtsPageTemplate'
 import CardDisplayer from '../components/cardDisplayer'
-import SortBox from '../components/sortBox'
 
-import tempDB from '../components/tempDB/myTestDB'
+import { getAllMagic } from '../components/misc_func/gettAll'
 
-const chaise = () => {
+const Chaises = () => {
+  const [value, setValue] = useState({})
+
+  useEffect(() => {
+    getAllMagic(setValue, 'chaises')
+  }, [])
+
   return (
     <div>
-      <Head>
-        <title>Furniture King Web Store</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <NavBar2 />
-      <div className="hidden lg:block">
-        <Carousel />
-      </div>
-      <ProductNavBar />
-      <SortBox />
-      <CardDisplayer productsArray={tempDB.chaise.products} />
+      <ProductsPageTemplate headTitle="Furniture King Web Store">
+        {value.products ? (
+          <CardDisplayer productsArray={value.products} />
+        ) : null}
+      </ProductsPageTemplate>
     </div>
   )
 }
 
-export default chaise
+export default Chaises
