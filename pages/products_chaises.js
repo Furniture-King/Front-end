@@ -16,7 +16,10 @@ const Chaises = () => {
     <div>
       <ProductsPageTemplate headTitle="Furniture King Web Store">
         {value.products ? (
-          <CardDisplayer productsArray={value.products} />
+          <CardDisplayer
+            productsArray={value.products}
+            href="/product_details/product_chaises"
+          />
         ) : null}
       </ProductsPageTemplate>
     </div>

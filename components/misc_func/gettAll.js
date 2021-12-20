@@ -10,3 +10,14 @@ export const getAllMagic = (seter, productType) => {
       console.log(error)
     })
 }
+
+export const getItemById = (seter, productType, id) => {
+  axios
+    .get(`http://localhost:5000/${productType}/${id}`)
+    .then((response) => {
+      seter({ products: response.data })
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+}

@@ -67,7 +67,7 @@ const ProductNavBar = () => {
           </div>
         </div>
         <nav className="hidden xs:flex justify-between h-16 md:w-8/12">
-          <NavBarItem href="/products_chaise" text="Chaise" />
+          <NavBarItem href="/products_chaises" text="Chaise" />
           <NavBarItem href="/products_canape" text="Canapé" />
           <NavBarItem href="/products_rangement" text="Rangement" />
           <NavBarItem href="/products_luminaire" text="Luminaire" />
@@ -77,7 +77,7 @@ const ProductNavBar = () => {
         {show ? (
           <ul className=" bg-color-bg-lightBrown ">
             <li>
-              <NavBarItem href="/products_chaise" text="Chaise" />
+              <NavBarItem href="/products_chaises" text="Chaise" />
             </li>
             <li>
               <NavBarItem href="/products_canape" text="Canapé" />

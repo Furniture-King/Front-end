@@ -10,8 +10,17 @@ import { MdShoppingCart } from 'react-icons/md'
 
 const Thumbnail = (props) => {
   const [isShown, setIsShown] = useState(false)
-  const { href, src, src2, title, text, price, numberOfRate, numberOfStar } =
-    props
+  const {
+    href,
+    src,
+    src2,
+    title,
+    text,
+    price,
+    numberOfRate,
+    numberOfStar,
+    onClick
+  } = props
 
   const wishClick = (e) => {
     e.preventDefault()
@@ -28,6 +37,7 @@ const Thumbnail = (props) => {
         className="rounded font-raleway p-5 mt-10  w-96 md:w-56 lg:w-80 xl:w-96 card shadow-xl hover:shadow-md"
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}
+        onClick={onClick}
       >
         <figure className="h-50">
           {isShown ? (
@@ -50,7 +60,12 @@ const Thumbnail = (props) => {
         </figure>
         <div className="card-body items-center m-0 p-0">
           <h2 className="font-poiretOne card-title mt-10 text-4xl">{title}</h2>
-          <p className="text-center text-sm">{text}</p>
+          {isShown ? (
+            <p className="text-center text-sm">{text}</p>
+          ) : (
+            <p className="text-center text-sm">{text.slice(0, 90)}...</p>
+          )}
+
           <p className="text-2xl font-bold my-2">{price} €</p>
           <StarGenerator
             numberOfRate={numberOfRate}
