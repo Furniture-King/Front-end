@@ -68,9 +68,9 @@ const ProductNavBar = () => {
         </div>
         <nav className="hidden xs:flex justify-between h-16 md:w-8/12">
           <NavBarItem href="/products_chaises" text="Chaise" />
-          <NavBarItem href="/products_canape" text="Canapé" />
-          <NavBarItem href="/products_rangement" text="Rangement" />
-          <NavBarItem href="/products_luminaire" text="Luminaire" />
+          <NavBarItem href="/products_canapes" text="Canapé" />
+          <NavBarItem href="/products_rangements" text="Rangement" />
+          <NavBarItem href="/products_luminaires" text="Luminaire" />
         </nav>
       </div>
       <div className="xs:hidden shadow-xl">
@@ -80,13 +80,13 @@ const ProductNavBar = () => {
               <NavBarItem href="/products_chaises" text="Chaise" />
             </li>
             <li>
-              <NavBarItem href="/products_canape" text="Canapé" />
+              <NavBarItem href="/products_canapes" text="Canapé" />
             </li>
             <li>
-              <NavBarItem href="/products_rangement" text="Rangement" />
+              <NavBarItem href="/products_rangements" text="Rangement" />
             </li>
             <li className="pb-2">
-              <NavBarItem href="/products_luminaire" text="Luminaire" />
+              <NavBarItem href="/products_luminaires" text="Luminaire" />
             </li>
           </ul>
         ) : null}

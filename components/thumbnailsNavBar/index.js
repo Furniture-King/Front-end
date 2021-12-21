@@ -30,25 +30,25 @@ const ThumbnailsNavBar = () => {
   return (
     <div className="flex justify-center md:justify-between flex-wrap mx-auto mt-10 w-10/12 md:w-8/12 ">
       <Card
-        href="/products_chaise"
+        href="/products_chaises"
         src="./images/images_background/chaise_bg.jpeg"
         title="Chaise"
       />
 
       <Card
-        href="/products_canape"
+        href="/products_canapes"
         src="./images/images_background/canape_bg.jpg"
         title="Canapé"
       />
 
       <Card
-        href="/products_commode"
+        href="/products_rangements"
         src="./images/images_background/commode.jpg"
         title="Commode"
       />
 
       <Card
-        href="/products_luminaire"
+        href="/products_luminaires"
         src="./images/images_background/luminaire.jpg"
         title="Luminaire"
       />

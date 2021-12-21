@@ -5,23 +5,22 @@ import CardDisplayer from '../components/cardDisplayer'
 
 import { getAllMagic } from '../components/misc_func/gettAll'
 
-const Chaises = () => {
+const Luminaires = () => {
   const [value, setValue] = useState({})
 
   useEffect(() => {
-    getAllMagic(setValue, 'chaises')
+    getAllMagic(setValue, 'luminaires')
     return function cleanup() {
       console.log('clean')
     }
   }, [])
-
   return (
     <div>
       <ProductsPageTemplate headTitle="Furniture King Web Store">
         {value.products ? (
           <CardDisplayer
             productsArray={value.products}
-            href="/product_details/product_chaise"
+            href="/product_details/product_luminaire"
           />
         ) : null}
       </ProductsPageTemplate>
@@ -29,4 +28,4 @@ const Chaises = () => {
   )
 }
 
-export default Chaises
+export default Luminaires

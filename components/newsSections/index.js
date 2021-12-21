@@ -127,7 +127,7 @@ const NewsSections = () => {
         </div>
         <div className="hidden md:w-8/12 lg:flex flex-col justify-between">
           <Card
-            href="/products_chaise"
+            href="/products_chaises"
             src="./images/images_background/chaise_bg.jpeg"
             title="Chaise"
             text="Rerum reiciendis beatae."
@@ -135,7 +135,7 @@ const NewsSections = () => {
 
           <div className="md:mt-5">
             <Card
-              href="/products_canape"
+              href="/products_canapes"
               src="./images/images_background/canape_bg.jpg"
               title="Canapé"
               text="Sit sit incidunt iure sapiente."
