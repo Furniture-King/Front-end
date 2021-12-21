@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import Link from 'next/link'
 
 import StarGenerator from '../misc_func/StarGenerator'
@@ -88,9 +87,6 @@ const BigCard = (props) => {
     </Link>
   )
 }
-BigCard.propTypes = {
-  href: PropTypes.string
-}
 
 const Card = (props) => {
   const { href, src, title, text } = props
@@ -110,12 +106,6 @@ const Card = (props) => {
       </a>
     </Link>
   )
-}
-Card.propTypes = {
-  href: PropTypes.string,
-  src: PropTypes.string,
-  title: PropTypes.string,
-  text: PropTypes.string
 }
 
 const NewsSections = () => {

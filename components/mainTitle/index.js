@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const MainTitle = (props) => {
   const { text } = props
@@ -12,9 +11,6 @@ const MainTitle = (props) => {
       </div>
     </div>
   )
-}
-MainTitle.propTypes = {
-  text: PropTypes.string
 }
 
 export default MainTitle

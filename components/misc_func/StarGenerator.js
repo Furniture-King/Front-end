@@ -1,8 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import { RiStarFill, RiStarLine } from 'react-icons/ri'
-// import { RiStarHalfFill } from 'react-icons/ri'
 
 const starsTransform = (stars) => {
   switch (stars) {
@@ -68,10 +66,6 @@ const StarGenerator = (props) => {
       <p className="pl-1 text-xs">({numberOfRate})</p>
     </div>
   )
-}
-StarGenerator.propTypes = {
-  numberOfRate: PropTypes.number,
-  numberOfStar: PropTypes.number
 }
 
 export default StarGenerator

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 import Link from 'next/link'
 
 import { HiOutlineMenu } from 'react-icons/hi'
@@ -20,10 +19,6 @@ const NavBarItem = (props) => {
       </a>
     </Link>
   )
-}
-NavBarItem.propTypes = {
-  href: PropTypes.string,
-  text: PropTypes.string
 }
 
 const ProductNavBar = () => {
