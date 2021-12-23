@@ -31,7 +31,6 @@ const BigCard = (props) => {
     getAllMagic(setValue, 'chaises')
   }, [])
   // console.log(value.products ? value.products.map((item) => item.title) : null)
-  // console.log(value.products ? value.products.map((item) => item._id) : null)
 
   return (
     <Link href={href} passHref>
@@ -39,7 +38,6 @@ const BigCard = (props) => {
         className="card text-center shadow-xl hover:shadow-md font-poiretOne h-full"
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}
-        href={href}
       >
         {isShown ? (
           <div>
@@ -119,7 +117,7 @@ const NewsSections = () => {
     <div className="mx-auto mt-10 w-10/12 md:w-8/12">
       <div className="flex flex-col md:flex-row">
         <div className="w-full mr-10">
-          <BigCard href="product_details/product_chaise" />
+          <BigCard href="/product_details/product_chaise" />
         </div>
         <div className="hidden md:w-8/12 lg:flex flex-col justify-between">
           <Card

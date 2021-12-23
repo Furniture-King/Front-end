@@ -7,36 +7,92 @@ import StarGenerator from '../misc_func/StarGenerator'
 
 import { BsBoxSeam } from 'react-icons/bs'
 import { MdShoppingCart } from 'react-icons/md'
+import { AiOutlineHeart } from 'react-icons/ai'
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+const MyLittleCarousel = (props) => {
+  const { url1, url2, url3 } = props
+  const [value, setValue] = useState(1)
+
+  return (
+    <div className="flex flex-col justify-start">
+      {value === 1 ? (
+        <img src={url1} style={{ width: '300em' }} />
+      ) : value === 2 ? (
+        <img src={url2} style={{ width: '300em' }} />
+      ) : (
+        <img src={url3} style={{ width: '300em' }} />
+      )}
+      <div className="flex justify-center">
+        <div
+          onClick={() => setValue(1)}
+          className="mr-3 cursor-pointer inline-flex items-center justify-center w-5 h-5 rounded-full shadow-lg bg-gray-500 bg-opacity-30 hover:bg-opacity-60"
+        ></div>
+        <div
+          onClick={() => setValue(2)}
+          className="mr-3 cursor-pointer inline-flex items-center justify-center w-5 h-5 rounded-full shadow-lg bg-gray-500 bg-opacity-30 hover:bg-opacity-60"
+        ></div>
+        <div
+          onClick={() => setValue(3)}
+          className=" cursor-pointer inline-flex items-center justify-center w-5 h-5 rounded-full shadow-lg bg-gray-500 bg-opacity-30 hover:bg-opacity-60"
+        ></div>
+      </div>
+    </div>
+  )
+}
 
 const BigCard = (props) => {
   const { db } = props
   const { state } = useContext(Context)
+  const [isShown, setIsShown] = useState(false)
   const [value, setValue] = useState([])
 
   useEffect(() => {
     getItemById(setValue, db, state)
   }, [])
 
-  console.log(value)
+  const toggleClick = () => {
+    if (isShown) {
+      setIsShown(false)
+    } else {
+      setIsShown(true)
+    }
+  }
 
   return (
     <div className="mx-auto my-10 w-10/12 md:w-8/12 font-poiretOne">
       {value.products ? (
         <div className="rounded shadow-md ">
           <div className="flex">
-            <div className="flex flex-col justify-start">
-              <img src={value.products.src} style={{ width: '300em' }} />
-            </div>
-            <div className="  p-4 flex flex-col justify-between bg-color-bg-ultraLight">
+            <MyLittleCarousel
+              url1={value.products.src}
+              url2={value.products.otherSrc[0]}
+              url3={value.products.otherSrc[1]}
+            />
+
+            <div className="p-4 flex flex-col justify-between bg-color-bg-ultraLight">
               <div className="mb-8">
+                <div style={{ transform: 'translate(-20%)' }}>
+                  <button
+                    className="inline-flex items-center justify-center w-8 h-8 
+                text-color-font-gray hover:text-color-bg-darkBlue transition-colors duration-150 bg-pink-800 rounded-full focus:shadow-outline hover:bg-pink-200 shadow hover:shadow-none"
+                  >
+                    <AiOutlineHeart size={20} />
+                  </button>
+                </div>
                 <div className="font-bold text-5xl mb-2 text-color-bg-lightBrown">
                   {value.products.title}
                 </div>
                 <div className="text-color-font-black font-raleway text-sm">
                   <p className="mt-5">{value.products.bigText1}</p>
-                  <p className="mt-5">{value.products.bigText2}</p>
+
+                  <p onClick={toggleClick} className="mt-2 cursor-pointer">
+                    En savoir plus...
+                  </p>
+                  {isShown ? (
+                    <p className="mt-5">{value.products.bigText2}</p>
+                  ) : null}
                 </div>
                 <div className="flex justify-end font-bold text-3xl my-5 text-color-bg-lightBrown">
                   {value.products.price} €
@@ -62,7 +118,7 @@ const BigCard = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center">
+              <div className="flex justify-end items-center">
                 <div className="btn-group">
                   <select id="myselect">
                     {arr.map((_, index) => {
@@ -73,7 +129,7 @@ const BigCard = (props) => {
                       )
                     })}
                   </select>
-                  <button className="flex  items-center border p-1 px-4 bg-color-bg-darkBlue text-color-bg-ultraLight">
+                  <button className="flex items-center  border p-1 px-4 bg-color-bg-darkBlue text-color-bg-ultraLight">
                     Ajouter au panier
                     <span className="ml-2">
                       <MdShoppingCart />
