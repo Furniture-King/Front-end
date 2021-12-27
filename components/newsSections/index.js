@@ -66,7 +66,6 @@ const BigCardNewSection = (props) => {
             <img
               src={value.products[RandomProduct].otherSrc[0]}
               className="pt-10"
-              // onClick={() => setState(value.products[RandomProduct]._id)}
               onClick={() =>
                 handleClick(
                   value.products[RandomProduct]._id,

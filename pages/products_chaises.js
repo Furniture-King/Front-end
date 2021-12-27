@@ -17,7 +17,12 @@ const Chaises = () => {
 
   return (
     <div>
-      <ProductsPageTemplate headTitle="Furniture King Web Store">
+      <ProductsPageTemplate
+        headTitle="Furniture King Web Store"
+        hrefItem1="/"
+        hrefItem2="/products_chaises"
+        BreadCrumbItem2="Chaises"
+      >
         {value.products ? (
           <CardDisplayer
             productsArray={value.products}

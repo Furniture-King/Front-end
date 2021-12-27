@@ -6,9 +6,10 @@ import Carousel from '../carousel'
 import ProductNavBar from '../productNavBar'
 import SortBox from '../sortBox'
 import Footer from '../footer'
+import MyBreadcrumb from '../breadcrumb'
 
 const ProductsPageTemplate = (props) => {
-  const { children, headTitle } = props
+  const { children, headTitle, hrefItem1, hrefItem2, BreadCrumbItem2 } = props
   return (
     <div>
       <Head>
@@ -21,6 +22,12 @@ const ProductsPageTemplate = (props) => {
       </div>
       <ProductNavBar />
       <SortBox />
+      <MyBreadcrumb
+        item1="Accueil"
+        item2={BreadCrumbItem2}
+        hrefItem1={hrefItem1}
+        hrefItem2={hrefItem2}
+      />
       {children}
       <div className="mt-5">
         <Footer />

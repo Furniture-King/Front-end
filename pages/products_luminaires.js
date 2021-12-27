@@ -16,7 +16,12 @@ const Luminaires = () => {
   }, [])
   return (
     <div>
-      <ProductsPageTemplate headTitle="Furniture King Web Store">
+      <ProductsPageTemplate
+        headTitle="Furniture King Web Store"
+        hrefItem1="/"
+        hrefItem2="/products_luminaires"
+        BreadCrumbItem2="Luminaires"
+      >
         {value.products ? (
           <CardDisplayer
             productsArray={value.products}

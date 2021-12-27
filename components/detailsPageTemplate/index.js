@@ -7,9 +7,18 @@ import Footer from '../footer'
 import MainTitle from '../mainTitle'
 import RubanProduct from '../rubanProducts'
 import InfoSection from '../infoSection'
+import MyBreadcrumb from '../breadcrumb'
 
 const DetailsPageTemplate = (props) => {
-  const { children, headTitle, contentTitle } = props
+  const {
+    children,
+    headTitle,
+    BreadCrumbItem2,
+    BreadCrumbItem3,
+    hrefItem1,
+    hrefItem2,
+    hrefItem3
+  } = props
   return (
     <div className="flex flex-col h-screen justify-between">
       <Head>
@@ -19,7 +28,14 @@ const DetailsPageTemplate = (props) => {
       <div>
         <NavBar2 />
         <ProductNavBar />
-        <MainTitle text={contentTitle} />
+        <MyBreadcrumb
+          item1="Accueil"
+          item2={BreadCrumbItem2}
+          item3={BreadCrumbItem3}
+          hrefItem1={hrefItem1}
+          hrefItem2={hrefItem2}
+          hrefItem3={hrefItem3}
+        />
         {children}
       </div>
       <div className="static bottom-0">

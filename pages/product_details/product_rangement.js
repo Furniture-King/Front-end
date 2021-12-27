@@ -11,7 +11,11 @@ const ProductRangement = () => {
     <div>
       <DetailsPageTemplate
         headTitle="details produits rangement"
-        contentTitle={`accueil/rangements/${name}`}
+        BreadCrumbItem2="Rangement"
+        BreadCrumbItem3={name}
+        hrefItem1="/"
+        hrefItem2="/products_rangements"
+        hrefItem3="/products_rangements"
       >
         <BigCard db="rangements" />
       </DetailsPageTemplate>

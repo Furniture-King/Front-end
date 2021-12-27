@@ -16,7 +16,12 @@ const Rangements = () => {
   }, [])
   return (
     <div>
-      <ProductsPageTemplate headTitle="Furniture King Web Store">
+      <ProductsPageTemplate
+        headTitle="Furniture King Web Store"
+        hrefItem1="/"
+        hrefItem2="/products_rangements"
+        BreadCrumbItem2="Rangements"
+      >
         {value.products ? (
           <CardDisplayer
             productsArray={value.products}
