@@ -50,7 +50,7 @@ const BigCard = (props) => {
 
   useEffect(() => {
     getItemById(setValue, db, state)
-  }, [])
+  }, [state])
 
   const toggleClick = () => {
     if (isShown) {

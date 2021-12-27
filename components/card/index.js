@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 import Link from 'next/link'
 
 import StarGenerator from '../misc_func/StarGenerator'
@@ -75,16 +74,6 @@ const Thumbnail = (props) => {
       </a>
     </Link>
   )
-}
-Thumbnail.propTypes = {
-  href: PropTypes.string,
-  src: PropTypes.string,
-  src2: PropTypes.string,
-  title: PropTypes.string,
-  text: PropTypes.string,
-  price: PropTypes.number,
-  numberOfRate: PropTypes.number,
-  numberOfStar: PropTypes.number
 }
 
 export default Thumbnail
