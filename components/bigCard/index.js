@@ -50,6 +50,9 @@ const BigCard = (props) => {
 
   useEffect(() => {
     getItemById(setValue, db, state)
+    return function cleanup() {
+      console.log('clean')
+    }
   }, [state])
 
   const toggleClick = () => {

@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+
+import Context from '../context'
 
 import { getAllMagic } from '../misc_func/gettAll'
 import Thumbnail from '../card'
@@ -6,6 +8,8 @@ import Thumbnail from '../card'
 const productsDisplayed = 2
 
 const PopularSection = () => {
+  const { setName } = useContext(Context)
+  const { setState } = useContext(Context)
   const [chairDB, setChairDB] = useState({})
   const [lumnDB, setLumnDB] = useState({})
   const [canapeDB, setCanapeDB] = useState({})
@@ -28,17 +32,19 @@ const PopularSection = () => {
                 return
               }
               return (
-                <Thumbnail
-                  key={item._id}
-                  href="/product_details"
-                  src={item.src}
-                  src2={item.otherSrc[1]}
-                  title={item.title}
-                  text={item.text}
-                  price={item.price}
-                  numberOfRate={item.totalVote}
-                  numberOfStar={item.rating}
-                />
+                <div key={item._id} onClick={() => setName(item.title)}>
+                  <Thumbnail
+                    href="/product_details/product_chaise"
+                    src={item.src}
+                    src2={item.otherSrc[1]}
+                    title={item.title}
+                    text={item.text}
+                    price={item.price}
+                    numberOfRate={item.totalVote}
+                    numberOfStar={item.rating}
+                    onClick={() => setState(item._id)}
+                  />
+                </div>
               )
             })
           : null}
@@ -50,17 +56,20 @@ const PopularSection = () => {
                 return
               }
               return (
-                <Thumbnail
-                  key={item._id}
-                  href="/product_details"
-                  src={item.src}
-                  src2={item.otherSrc[1]}
-                  title={item.title}
-                  text={item.text}
-                  price={item.price}
-                  numberOfRate={item.totalVote}
-                  numberOfStar={item.rating}
-                />
+                <div key={item._id} onClick={() => setName(item.title)}>
+                  <Thumbnail
+                    key={item._id}
+                    href="/product_details/product_luminaire"
+                    src={item.src}
+                    src2={item.otherSrc[1]}
+                    title={item.title}
+                    text={item.text}
+                    price={item.price}
+                    numberOfRate={item.totalVote}
+                    numberOfStar={item.rating}
+                    onClick={() => setState(item._id)}
+                  />
+                </div>
               )
             })
           : null}
@@ -72,17 +81,20 @@ const PopularSection = () => {
                 return
               }
               return (
-                <Thumbnail
-                  key={item._id}
-                  href="/product_details"
-                  src={item.src}
-                  src2={item.otherSrc[1]}
-                  title={item.title}
-                  text={item.text}
-                  price={item.price}
-                  numberOfRate={item.totalVote}
-                  numberOfStar={item.rating}
-                />
+                <div key={item._id} onClick={() => setName(item.title)}>
+                  <Thumbnail
+                    key={item._id}
+                    href="/product_details/product_canape"
+                    src={item.src}
+                    src2={item.otherSrc[1]}
+                    title={item.title}
+                    text={item.text}
+                    price={item.price}
+                    numberOfRate={item.totalVote}
+                    numberOfStar={item.rating}
+                    onClick={() => setState(item._id)}
+                  />
+                </div>
               )
             })
           : null}
@@ -94,17 +106,20 @@ const PopularSection = () => {
                 return
               }
               return (
-                <Thumbnail
-                  key={item._id}
-                  href="/product_details"
-                  src={item.src}
-                  src2={item.otherSrc[1]}
-                  title={item.title}
-                  text={item.text}
-                  price={item.price}
-                  numberOfRate={item.totalVote}
-                  numberOfStar={item.rating}
-                />
+                <div key={item._id} onClick={() => setName(item.title)}>
+                  <Thumbnail
+                    key={item._id}
+                    href="/product_details/product_rangement"
+                    src={item.src}
+                    src2={item.otherSrc[1]}
+                    title={item.title}
+                    text={item.text}
+                    price={item.price}
+                    numberOfRate={item.totalVote}
+                    numberOfStar={item.rating}
+                    onClick={() => setState(item._id)}
+                  />
+                </div>
               )
             })
           : null}

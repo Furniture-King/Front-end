@@ -21,16 +21,22 @@ const cartClick = (e) => {
 
 const RandomProduct = Math.floor(Math.random() * 15)
 
-const BigCard = (props) => {
+const BigCardNewSection = (props) => {
   const { href } = props
   const [isShown, setIsShown] = useState(false)
   const [value, setValue] = useState({})
   const { setState } = useContext(Context)
+  const { setName } = useContext(Context)
 
   useEffect(() => {
     getAllMagic(setValue, 'chaises')
   }, [])
   // console.log(value.products ? value.products.map((item) => item.title) : null)
+
+  const handleClick = (id, productName) => {
+    setState(id)
+    setName(productName)
+  }
 
   return (
     <Link href={href} passHref>
@@ -60,14 +66,23 @@ const BigCard = (props) => {
             <img
               src={value.products[RandomProduct].otherSrc[0]}
               className="pt-10"
-              onClick={() => setState(value.products[RandomProduct]._id)}
+              // onClick={() => setState(value.products[RandomProduct]._id)}
+              onClick={() =>
+                handleClick(
+                  value.products[RandomProduct]._id,
+                  value.products[RandomProduct].title
+                )
+              }
             />
           ) : (
             <img src={value.products[RandomProduct].src} className="pt-10" />
           )
         ) : null}
         {value.products ? (
-          <div className="card-body p-5 justify-between">
+          <div
+            className="card-body p-5 justify-between"
+            onClick={() => setState(value.products[RandomProduct]._id)}
+          >
             <div className="card-title text-4xl">
               {value.products[RandomProduct].title}
             </div>
@@ -117,7 +132,7 @@ const NewsSections = () => {
     <div className="mx-auto mt-10 w-10/12 md:w-8/12">
       <div className="flex flex-col md:flex-row">
         <div className="w-full mr-10">
-          <BigCard href="/product_details/product_chaise" />
+          <BigCardNewSection href="/product_details/product_chaise" />
         </div>
         <div className="hidden md:w-8/12 lg:flex flex-col justify-between">
           <Card
