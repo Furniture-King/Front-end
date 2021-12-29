@@ -91,8 +91,8 @@ const BigCardNewSection = (props) => {
             <div className="flex justify-between items-end">
               <div className="flex items-center">
                 <StarGenerator
-                  numberOfRate={value.products[RandomProduct].totalVote}
-                  numberOfStar={value.products[RandomProduct].rating}
+                  totalVotes={value.products[RandomProduct].totalVote}
+                  stars={value.products[RandomProduct].stars}
                 />
               </div>
               <p className="text-3xl font-black">

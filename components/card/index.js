@@ -66,10 +66,7 @@ const Thumbnail = (props) => {
           )}
 
           <p className="text-2xl font-bold my-2">{price} €</p>
-          <StarGenerator
-            numberOfRate={numberOfRate}
-            numberOfStar={numberOfStar}
-          />
+          <StarGenerator totalVotes={numberOfRate} stars={numberOfStar} />
         </div>
       </a>
     </Link>

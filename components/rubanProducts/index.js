@@ -21,7 +21,7 @@ const RubanProductItem = (props) => {
           <div className="font-semibold">{title}</div>
           <div>{price} €</div>
           <div>
-            <StarGenerator numberOfRate={starz} numberOfStar={rating} />
+            <StarGenerator totalVotes={starz} stars={rating} />
           </div>
         </div>
       </a>
@@ -63,7 +63,7 @@ const RubanProduct = () => {
                     src={item.src}
                     title={item.title}
                     price={item.price}
-                    rating={item.rating}
+                    rating={item.stars}
                     starz={item.totalVote}
                     onClick={() => setState(item._id)}
                   />
@@ -85,7 +85,7 @@ const RubanProduct = () => {
                     src={item.src}
                     title={item.title}
                     price={item.price}
-                    rating={item.rating}
+                    rating={item.stars}
                     starz={item.totalVote}
                     onClick={() => setState(item._id)}
                   />
@@ -111,7 +111,7 @@ const RubanProduct = () => {
                     src={item.src}
                     title={item.title}
                     price={item.price}
-                    rating={item.rating}
+                    rating={item.stars}
                     starz={item.totalVote}
                     onClick={() => setState(item._id)}
                   />
@@ -137,7 +137,7 @@ const RubanProduct = () => {
                     src={item.src}
                     title={item.title}
                     price={item.price}
-                    rating={item.rating}
+                    rating={item.stars}
                     starz={item.totalVote}
                     onClick={() => setState(item._id)}
                   />
@@ -163,7 +163,7 @@ const RubanProduct = () => {
                     src={item.src}
                     title={item.title}
                     price={item.price}
-                    rating={item.rating}
+                    rating={item.stars}
                     starz={item.totalVote}
                     onClick={() => setState(item._id)}
                   />

@@ -127,8 +127,8 @@ const BigCard = (props) => {
                   )}
                   <div>
                     <StarGenerator
-                      numberOfRate={value.products.totalVote}
-                      numberOfStar={value.products.rating}
+                      totalVotes={value.products.totalVote}
+                      stars={value.products.stars}
                     />
                   </div>
                 </div>

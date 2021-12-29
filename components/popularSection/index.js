@@ -41,7 +41,7 @@ const PopularSection = () => {
                     text={item.text}
                     price={item.price}
                     numberOfRate={item.totalVote}
-                    numberOfStar={item.rating}
+                    numberOfStar={item.stars}
                     onClick={() => setState(item._id)}
                   />
                 </div>
@@ -66,7 +66,7 @@ const PopularSection = () => {
                     text={item.text}
                     price={item.price}
                     numberOfRate={item.totalVote}
-                    numberOfStar={item.rating}
+                    numberOfStar={item.stars}
                     onClick={() => setState(item._id)}
                   />
                 </div>
@@ -91,7 +91,7 @@ const PopularSection = () => {
                     text={item.text}
                     price={item.price}
                     numberOfRate={item.totalVote}
-                    numberOfStar={item.rating}
+                    numberOfStar={item.stars}
                     onClick={() => setState(item._id)}
                   />
                 </div>
@@ -116,7 +116,7 @@ const PopularSection = () => {
                     text={item.text}
                     price={item.price}
                     numberOfRate={item.totalVote}
-                    numberOfStar={item.rating}
+                    numberOfStar={item.stars}
                     onClick={() => setState(item._id)}
                   />
                 </div>

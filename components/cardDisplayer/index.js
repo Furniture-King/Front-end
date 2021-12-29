@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 
 import Context from '../context'
 
@@ -26,7 +26,7 @@ const CardDisplayer = (props) => {
                 text={productItem.text}
                 price={productItem.price}
                 numberOfRate={productItem.totalVote}
-                numberOfStar={productItem.rating}
+                numberOfStar={productItem.stars}
                 onClick={() => setState(productItem._id)}
               />
             </div>

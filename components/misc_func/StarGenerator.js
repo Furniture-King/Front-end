@@ -2,8 +2,10 @@ import React from 'react'
 
 import { RiStarFill, RiStarLine } from 'react-icons/ri'
 
-const starsTransform = (stars) => {
-  switch (stars) {
+const starsTransform = (stars, totalVotes) => {
+  const value = totalVotes / stars
+
+  switch (value) {
     case 1:
       return (
         <div className="flex">
@@ -58,12 +60,12 @@ const starsTransform = (stars) => {
 }
 
 const StarGenerator = (props) => {
-  const { numberOfRate, numberOfStar } = props
+  const { totalVotes, stars } = props
 
   return (
     <div className="flex">
-      <div className="text-yellow-400">{starsTransform(numberOfStar)}</div>
-      <p className="pl-1 text-xs">({numberOfRate})</p>
+      <div className="text-yellow-400">{starsTransform(totalVotes, stars)}</div>
+      <p className="pl-1 text-xs">({totalVotes})</p>
     </div>
   )
 }
