@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import { MdCreditCardOff } from 'react-icons/md'
 import { FiTruck, FiPhoneCall } from 'react-icons/fi'
@@ -22,13 +21,6 @@ const InfoItem = (props) => {
       <div className="flex">{children}</div>
     </div>
   )
-}
-InfoItem.propTypes = {
-  title: PropTypes.string,
-  text: PropTypes.string,
-  subText: PropTypes.string,
-  icon: PropTypes.object,
-  children: PropTypes.node
 }
 
 const InfoSection = () => {
