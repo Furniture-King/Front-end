@@ -24,7 +24,7 @@ const MyLittleCarousel = (props) => {
       ) : (
         <img src={url3} style={{ width: '300em' }} />
       )}
-      <div className="flex justify-center">
+      <div className="flex justify-center m-2">
         <div
           onClick={() => setValue(1)}
           className="mr-3 cursor-pointer inline-flex items-center justify-center w-5 h-5 rounded-full shadow-lg bg-gray-500 bg-opacity-30 hover:bg-opacity-60"
@@ -53,7 +53,7 @@ const BigCard = (props) => {
     return function cleanup() {
       console.log('clean')
     }
-  }, [state])
+  }, [setValue, db, state])
 
   const toggleClick = () => {
     if (isShown) {
@@ -67,7 +67,7 @@ const BigCard = (props) => {
     <div className="mx-auto my-10 w-10/12 md:w-8/12 font-poiretOne">
       {value.products ? (
         <div className="rounded shadow-md ">
-          <div className="flex">
+          <div className="flex lg:flex-row flex-col">
             <MyLittleCarousel
               url1={value.products.src}
               url2={value.products.otherSrc[0]}
@@ -76,20 +76,32 @@ const BigCard = (props) => {
 
             <div className="p-4 flex flex-col justify-between bg-color-bg-ultraLight">
               <div className="mb-8">
-                <div style={{ transform: 'translate(-20%)' }}>
+                <div style={{ transform: 'translate(-30%)' }}>
                   <button
-                    className="inline-flex items-center justify-center w-8 h-8 
-                text-color-font-gray hover:text-color-bg-darkBlue transition-colors duration-150 bg-pink-800 rounded-full focus:shadow-outline hover:bg-pink-200 shadow hover:shadow-none"
+                    className="hidden lg:inline-flex items-center justify-center w-8 h-8 
+                text-color-font-gray hover:text-color-bg-darkBlue transition-colors duration-150 
+                bg-pink-800 rounded-full focus:shadow-outline 
+                hover:bg-pink-200 shadow hover:shadow-none"
                   >
                     <AiOutlineHeart size={20} />
                   </button>
                 </div>
-                <div className="font-bold text-5xl mb-2 text-color-bg-lightBrown">
-                  {value.products.title}
+                <div className="flex justify-between">
+                  <div className="font-bold text-5xl mb-2 text-color-bg-lightBrown">
+                    {value.products.title}
+                  </div>
+                  <button
+                    className="lg:hidden inline-flex items-center justify-center w-8 h-8 
+                text-color-font-gray hover:text-color-bg-darkBlue transition-colors duration-150 
+                bg-pink-800 rounded-full focus:shadow-outline 
+                hover:bg-pink-200 shadow hover:shadow-none"
+                  >
+                    <AiOutlineHeart size={20} />
+                  </button>
                 </div>
+
                 <div className="text-color-font-black font-raleway text-sm">
                   <p className="mt-5">{value.products.bigText1}</p>
-
                   <p onClick={toggleClick} className="mt-2 cursor-pointer">
                     En savoir plus...
                   </p>
@@ -132,9 +144,12 @@ const BigCard = (props) => {
                       )
                     })}
                   </select>
-                  <button className="flex items-center  border p-1 px-4 bg-color-bg-darkBlue text-color-bg-ultraLight">
-                    Ajouter au panier
-                    <span className="ml-2">
+
+                  <button className="flex items-center border p-1 px-4 bg-color-bg-darkBlue text-color-bg-ultraLight">
+                    <span className="block lg:hidden xl:block">
+                      Ajouter au panier
+                    </span>
+                    <span className="ml-2 ">
                       <MdShoppingCart />
                     </span>
                   </button>

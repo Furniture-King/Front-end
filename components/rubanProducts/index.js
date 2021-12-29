@@ -100,7 +100,11 @@ const RubanProduct = () => {
                 return
               }
               return (
-                <div key={item._id} onClick={() => setName(item.title)}>
+                <div
+                  key={item._id}
+                  onClick={() => setName(item.title)}
+                  className="hidden md:block"
+                >
                   <RubanProductItem
                     key={item._id}
                     href="/product_details/product_canape"
@@ -122,7 +126,11 @@ const RubanProduct = () => {
                 return
               }
               return (
-                <div key={item._id} onClick={() => setName(item.title)}>
+                <div
+                  key={item._id}
+                  onClick={() => setName(item.title)}
+                  className="hidden xl:block"
+                >
                   <RubanProductItem
                     key={item._id}
                     href="/product_details/product_rangement"
@@ -144,7 +152,11 @@ const RubanProduct = () => {
                 return
               }
               return (
-                <div key={item._id} onClick={() => setName(item.title)}>
+                <div
+                  key={item._id}
+                  onClick={() => setName(item.title)}
+                  className="hidden xl:block"
+                >
                   <RubanProductItem
                     key={item._id}
                     href="/product_details/product_chaise"
