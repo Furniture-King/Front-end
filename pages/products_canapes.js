@@ -21,6 +21,7 @@ const Canapes = () => {
         hrefItem1="/"
         hrefItem2="/products_canapes"
         BreadCrumbItem2="Canapés"
+        dbName="canapes"
       >
         {value.products ? (
           <CardDisplayer

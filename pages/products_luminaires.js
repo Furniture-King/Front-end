@@ -21,6 +21,7 @@ const Luminaires = () => {
         hrefItem1="/"
         hrefItem2="/products_luminaires"
         BreadCrumbItem2="Luminaires"
+        dbName="luminaires"
       >
         {value.products ? (
           <CardDisplayer

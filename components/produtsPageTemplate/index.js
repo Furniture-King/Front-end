@@ -9,7 +9,8 @@ import Footer from '../footer'
 import MyBreadcrumb from '../breadcrumb'
 
 const ProductsPageTemplate = (props) => {
-  const { children, headTitle, hrefItem1, hrefItem2, BreadCrumbItem2 } = props
+  const { children, headTitle, hrefItem1, hrefItem2, BreadCrumbItem2, dbName } =
+    props
   return (
     <div>
       <Head>
@@ -21,7 +22,7 @@ const ProductsPageTemplate = (props) => {
         <Carousel />
       </div>
       <ProductNavBar />
-      <SortBox />
+      <SortBox dbName={dbName} />
       <MyBreadcrumb
         item1="Accueil"
         item2={BreadCrumbItem2}

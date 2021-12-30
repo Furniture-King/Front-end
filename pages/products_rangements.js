@@ -21,6 +21,7 @@ const Rangements = () => {
         hrefItem1="/"
         hrefItem2="/products_rangements"
         BreadCrumbItem2="Rangements"
+        dbName="rangements"
       >
         {value.products ? (
           <CardDisplayer

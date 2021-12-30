@@ -21,22 +21,24 @@ const MenuItem = (props) => {
 
 const Range = (props) => {
   const { dbName } = props
+  const [db, setDb] = useState([])
   const [values, setValues] = useState(0)
   const [maxValues, setMaxValues] = useState(0)
-  const [db, setDb] = useState([])
 
   useEffect(() => {
     getAllMagic(setDb, dbName)
   }, [])
 
   const [...pricesArray] = db.products
-    ? db.products.map((item) => item.price).sort()
+    ? db.products.map((item) => item.price).sort((a, b) => a - b)
     : []
 
   const miniPrice = pricesArray[0]
   const maxPrice = pricesArray[pricesArray.length - 1]
 
   // console.log(miniPrice, maxPrice)
+  // console.log(values ? values.target.value : null)
+  // console.log(maxValues ? maxValues.target.value : null)
 
   return (
     <div>
@@ -68,7 +70,8 @@ const Range = (props) => {
   )
 }
 
-const SortBox = () => {
+const SortBox = (props) => {
+  const { dbName } = props
   const [show, setShow] = useState(false)
 
   const toggleMenu = () => {
@@ -102,17 +105,17 @@ const SortBox = () => {
             <div>
               <div>COULEURS</div>
               <div className="flex mt-2">
-                <div className="rounded-full p-4 bg-red-300"></div>
-                <div className="ml-1 rounded-full p-4 bg-red-500"></div>
-                <div className="ml-1 rounded-full p-4 bg-gray-300"></div>
+                <div className="rounded-full p-4 bg-white border"></div>
+                <div className="ml-1 rounded-full p-4 bg-black"></div>
+                <div className="ml-1 rounded-full p-4 bg-gray-600"></div>
                 <div className="ml-1 rounded-full p-4 bg-red-800"></div>
-                <div className="ml-1 rounded-full p-4 bg-blue-300"></div>
+                <div className="ml-1 rounded-full p-4 bg-blue-900"></div>
               </div>
             </div>
             <div>
               <div>PRIX</div>
               <div className="flex mt-2">
-                <Range dbName="chaises" />
+                <Range dbName={dbName} />
               </div>
             </div>
             <div>
