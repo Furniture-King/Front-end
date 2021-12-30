@@ -70,6 +70,40 @@ const Range = (props) => {
   )
 }
 
+const PriceItem = (props) => {
+  const handleClick = (e) => {
+    // e.preventDefault()
+    // e.stopPropagation()
+    console.log(e.target.value)
+  }
+
+  const { title, value } = props
+  return (
+    <div
+      className=" p-1 rounded 
+      transition-shadow 
+      duration-300
+      hover:shadow-md
+      hover:bg-color-bg-light 
+      hover:text-color-bg-lightBrown"
+    >
+      <button onClick={handleClick} value={value}>
+        {title}
+      </button>
+    </div>
+  )
+}
+
+const ColorItem = (props) => {
+  const { color } = props
+  return (
+    <div
+      className={`${color} rounded-full p-4 shadow-lg cursor-pointer 
+      m-1 transition-shadow duration-150 hover:shadow-sm`}
+    ></div>
+  )
+}
+
 const SortBox = (props) => {
   const { dbName } = props
   const [show, setShow] = useState(false)
@@ -83,7 +117,7 @@ const SortBox = (props) => {
   }
 
   return (
-    <div className="mx-auto w-10/12 md:w-8/12 font-raleway pt-3">
+    <div className="mx-auto w-10/12 md:w-8/12 font-raleway pt-3 ">
       {!show ? (
         <div className="flex justify-around" onClick={toggleMenu}>
           <MenuItem title="TRIER PAR" />
@@ -97,19 +131,19 @@ const SortBox = (props) => {
           <div className="flex justify-around ">
             <div>
               <div>TRIER PAR</div>
-              <div className="mt-2">Prix croissant</div>
-              <div className="mt-2">Prix décroissant</div>
-              <div className="mt-2">Note clients</div>
-              <div className="mt-2">Nom</div>
+              <PriceItem title="Prix croissant" value="croissant" />
+              <PriceItem title="Prix décroissant" value="decroissant" />
+              <PriceItem title="Note clients" value="clients" />
+              <PriceItem title="Nom" value="nom" />
             </div>
             <div>
               <div>COULEURS</div>
               <div className="flex mt-2">
-                <div className="rounded-full p-4 bg-white border"></div>
-                <div className="ml-1 rounded-full p-4 bg-black"></div>
-                <div className="ml-1 rounded-full p-4 bg-gray-600"></div>
-                <div className="ml-1 rounded-full p-4 bg-red-800"></div>
-                <div className="ml-1 rounded-full p-4 bg-blue-900"></div>
+                <ColorItem color="bg-white" />
+                <ColorItem color="bg-black" />
+                <ColorItem color="bg-gray-600" />
+                <ColorItem color="bg-red-800" />
+                <ColorItem color="bg-blue-900" />
               </div>
             </div>
             <div>
