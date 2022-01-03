@@ -93,6 +93,7 @@ let userColorsArray = []
 const ColorItem = (props) => {
   const { color, value } = props
   const [show, setShow] = useState(false)
+  const [colorDisplayer, setColorDisplayer] = useState(false)
   const { setColors } = useContext(Context)
 
   const handleClick = (e) => {
@@ -104,23 +105,59 @@ const ColorItem = (props) => {
   const toggleMenu = () => {
     if (show) {
       setShow(false)
+      setColorDisplayer(false)
     } else {
       setShow(true)
+      setColorDisplayer(true)
+    }
+  }
+
+  const deleteColorItem = (e) => {
+    setShow(false)
+    setColorDisplayer(false)
+
+    for (let i = 0; i < userColorsArray.length; i++) {
+      if (userColorsArray[i] === e.target.value) {
+        userColorsArray.splice([i], 1)
+        setColors(userColorsArray)
+      }
     }
   }
 
   return (
-    <button
-      className={
-        show
-          ? `${color} rounded-full p-4 shadow-lg cursor-pointer 
-      m-1 transition-shadow duration-150 active:shadow-none outline-black`
-          : `${color} rounded-full p-4 shadow-lg cursor-pointer 
+    <div>
+      {colorDisplayer ? (
+        <div className="flex flex-col">
+          <button
+            disabled
+            className={
+              show
+                ? `${color} rounded-full p-4 shadow-lg cursor-pointer 
+      m-1 transition-shadow duration-150 active:shadow-none outline-black `
+                : `${color} rounded-full p-4 shadow-lg cursor-pointer 
       m-1 transition-shadow duration-150 active:shadow-none `
-      }
-      onClick={handleClick}
-      value={value}
-    ></button>
+            }
+            onClick={handleClick}
+            value={value}
+          ></button>
+          <button className="border" onClick={deleteColorItem} value={value}>
+            click
+          </button>
+        </div>
+      ) : (
+        <button
+          className={
+            show
+              ? `${color} rounded-full p-4 shadow-lg cursor-pointer 
+      m-1 transition-shadow duration-150 active:shadow-none outline-black `
+              : `${color} rounded-full p-4 shadow-lg cursor-pointer 
+      m-1 transition-shadow duration-150 active:shadow-none `
+          }
+          onClick={handleClick}
+          value={value}
+        ></button>
+      )}
+    </div>
   )
 }
 
