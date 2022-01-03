@@ -6,7 +6,6 @@ import { getAllMagic } from '../misc_func/gettAll'
 
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { FiTruck } from 'react-icons/fi'
-import { AiFillCloseCircle } from 'react-icons/ai'
 
 const initialState = {
   sortBy: '',
@@ -32,10 +31,15 @@ const Range = (props) => {
   const [db, setDb] = useState([])
   const [values, setValues] = useState(0)
   const [maxValues, setMaxValues] = useState(0)
+  const { setDownPrice } = useContext(Context)
+  const { setUpPrice } = useContext(Context)
 
   useEffect(() => {
     getAllMagic(setDb, dbName)
-  }, [])
+
+    setDownPrice(values ? values.target.value : null)
+    setUpPrice(maxValues ? maxValues.target.value : null)
+  }, [values, maxValues])
 
   const [...pricesArray] = db.products
     ? db.products.map((item) => item.price).sort((a, b) => a - b)
@@ -43,6 +47,9 @@ const Range = (props) => {
 
   const miniPrice = pricesArray[0]
   const maxPrice = pricesArray[pricesArray.length - 1]
+
+  initialState.minPrice = Number(values ? values.target.value : miniPrice)
+  initialState.maxPrice = Number(maxValues ? maxValues.target.value : maxPrice)
 
   return (
     <div>
@@ -209,14 +216,20 @@ const PriceItem = (props) => {
 const SortBox = (props) => {
   const { dbName } = props
   const [show, setShow] = useState(false)
-  const { sortBy } = useContext(Context)
-  const { colors } = useContext(Context)
+  const { sortBy, setSortBy } = useContext(Context)
+  const { colors, setColors } = useContext(Context)
+  const { downPrice } = useContext(Context)
+  const { upPrice } = useContext(Context)
 
   initialState.sortBy = sortBy
   initialState.color = colors
+  initialState.minPrice = downPrice
+  initialState.maxPrice = upPrice
 
   const toggleMenu = () => {
     if (show) {
+      setSortBy('')
+      setColors([])
       setShow(false)
     } else {
       setShow(true)
@@ -275,19 +288,14 @@ const SortBox = (props) => {
             </div>
           </div>
           <div className="border-t flex justify-between">
-            {/* <div>
-              {initialState.sortBy}
-              {initialState.color.map((item, index) => {
-                return <div key={index}>{item}</div>
-              })}
-            </div> */}
             <div className="mx-auto my-5">
               <MyButton
-                title="RÉINITIALISER"
+                title="ANNULER"
                 bgColor="bg-color-bg-lightBrown"
                 fontColor="text-color-font-white"
                 hoverBg="hover:bg-color-font-white"
                 hoverFont="hover:text-red-500"
+                onClick={toggleMenu}
               />
               <MyButton
                 title="APPLIQUER"
@@ -297,13 +305,6 @@ const SortBox = (props) => {
                 hoverFont="hover:text-color-bg-darkBlue"
                 onClick={handleClick}
               />
-            </div>
-            <div
-              onClick={toggleMenu}
-              className="cursor-pointer"
-              style={{ transform: 'translate(-100%) translateY(10%)' }}
-            >
-              <AiFillCloseCircle />
             </div>
           </div>
         </div>

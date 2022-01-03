@@ -5,6 +5,8 @@ export const Provider = (props) => {
   const [name, setName] = useState('')
   const [sortBy, setSortBy] = useState('')
   const [colors, setColors] = useState([])
+  const [downPrice, setDownPrice] = useState(0)
+  const [upPrice, setUpPrice] = useState(0)
 
   return (
     <Context.Provider
@@ -17,7 +19,11 @@ export const Provider = (props) => {
         sortBy,
         setSortBy,
         colors,
-        setColors
+        setColors,
+        downPrice,
+        setDownPrice,
+        upPrice,
+        setUpPrice
       }}
     />
   )
