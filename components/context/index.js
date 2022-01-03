@@ -3,6 +3,8 @@ import React, { createContext, useState } from 'react'
 export const Provider = (props) => {
   const [state, setState] = useState('')
   const [name, setName] = useState('')
+  const [sortBy, setSortBy] = useState('')
+  const [colors, setColors] = useState([])
 
   return (
     <Context.Provider
@@ -11,7 +13,11 @@ export const Provider = (props) => {
         state,
         setState,
         name,
-        setName
+        setName,
+        sortBy,
+        setSortBy,
+        colors,
+        setColors
       }}
     />
   )
