@@ -4,6 +4,7 @@ import Context from '../context'
 
 import { getItemById } from '../misc_func/gettAll'
 import StarGenerator from '../misc_func/StarGenerator'
+import MySpinner from '../spinner'
 
 import { BsBoxSeam } from 'react-icons/bs'
 import { MdShoppingCart } from 'react-icons/md'
@@ -158,7 +159,11 @@ const BigCard = (props) => {
             </div>
           </div>
         </div>
-      ) : null}
+      ) : (
+        <div className=" my-48">
+          <MySpinner />
+        </div>
+      )}
     </div>
   )
 }

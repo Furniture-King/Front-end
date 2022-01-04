@@ -4,6 +4,7 @@ import ProductsPageTemplate from '../components/produtsPageTemplate'
 import CardDisplayer from '../components/cardDisplayer'
 
 import { getAllMagic } from '../components/misc_func/gettAll'
+import MySpinner from '../components/spinner'
 
 const Rangements = () => {
   const [value, setValue] = useState({})
@@ -28,7 +29,11 @@ const Rangements = () => {
             productsArray={value.products}
             href="/product_details/product_rangement"
           />
-        ) : null}
+        ) : (
+          <div className="my-48">
+            <MySpinner />
+          </div>
+        )}
       </ProductsPageTemplate>
     </div>
   )

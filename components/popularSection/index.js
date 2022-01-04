@@ -4,6 +4,7 @@ import Context from '../context'
 
 import { getAllMagic } from '../misc_func/gettAll'
 import Thumbnail from '../card'
+import MySpinner from '../spinner'
 
 const productsDisplayed = 2
 
@@ -26,103 +27,119 @@ const PopularSection = () => {
     <div className="mx-auto w-10/12 md:w-8/12">
       <div className="flex flex-wrap justify-center md:justify-between">
         {/* CHAISES SECTION */}
-        {chairDB.products
-          ? chairDB.products.map((item, index) => {
-              if (index > productsDisplayed - 1) {
-                return
-              }
-              return (
-                <div key={item._id} onClick={() => setName(item.title)}>
-                  <Thumbnail
-                    href="/product_details/product_chaise"
-                    src={item.src}
-                    src2={item.otherSrc[1]}
-                    title={item.title}
-                    text={item.text}
-                    price={item.price}
-                    numberOfRate={item.totalVote}
-                    numberOfStar={item.stars}
-                    onClick={() => setState(item._id)}
-                  />
-                </div>
-              )
-            })
-          : null}
+        {chairDB.products ? (
+          chairDB.products.map((item, index) => {
+            if (index > productsDisplayed - 1) {
+              return
+            }
+            return (
+              <div key={item._id} onClick={() => setName(item.title)}>
+                <Thumbnail
+                  href="/product_details/product_chaise"
+                  src={item.src}
+                  src2={item.otherSrc[1]}
+                  title={item.title}
+                  text={item.text}
+                  price={item.price}
+                  numberOfRate={item.totalVote}
+                  numberOfStar={item.stars}
+                  onClick={() => setState(item._id)}
+                />
+              </div>
+            )
+          })
+        ) : (
+          <div className="my-48">
+            <MySpinner />
+          </div>
+        )}
 
         {/* LUMINAIRES SECTION */}
-        {lumnDB.products
-          ? lumnDB.products.map((item, index) => {
-              if (index > productsDisplayed - 1) {
-                return
-              }
-              return (
-                <div key={item._id} onClick={() => setName(item.title)}>
-                  <Thumbnail
-                    key={item._id}
-                    href="/product_details/product_luminaire"
-                    src={item.src}
-                    src2={item.otherSrc[1]}
-                    title={item.title}
-                    text={item.text}
-                    price={item.price}
-                    numberOfRate={item.totalVote}
-                    numberOfStar={item.stars}
-                    onClick={() => setState(item._id)}
-                  />
-                </div>
-              )
-            })
-          : null}
+        {lumnDB.products ? (
+          lumnDB.products.map((item, index) => {
+            if (index > productsDisplayed - 1) {
+              return
+            }
+            return (
+              <div key={item._id} onClick={() => setName(item.title)}>
+                <Thumbnail
+                  key={item._id}
+                  href="/product_details/product_luminaire"
+                  src={item.src}
+                  src2={item.otherSrc[1]}
+                  title={item.title}
+                  text={item.text}
+                  price={item.price}
+                  numberOfRate={item.totalVote}
+                  numberOfStar={item.stars}
+                  onClick={() => setState(item._id)}
+                />
+              </div>
+            )
+          })
+        ) : (
+          <div className="my-48">
+            <MySpinner />
+          </div>
+        )}
 
         {/* CANAPES  SECTION */}
-        {canapeDB.products
-          ? canapeDB.products.map((item, index) => {
-              if (index > productsDisplayed - 1) {
-                return
-              }
-              return (
-                <div key={item._id} onClick={() => setName(item.title)}>
-                  <Thumbnail
-                    key={item._id}
-                    href="/product_details/product_canape"
-                    src={item.src}
-                    src2={item.otherSrc[1]}
-                    title={item.title}
-                    text={item.text}
-                    price={item.price}
-                    numberOfRate={item.totalVote}
-                    numberOfStar={item.stars}
-                    onClick={() => setState(item._id)}
-                  />
-                </div>
-              )
-            })
-          : null}
+        {canapeDB.products ? (
+          canapeDB.products.map((item, index) => {
+            if (index > productsDisplayed - 1) {
+              return
+            }
+            return (
+              <div key={item._id} onClick={() => setName(item.title)}>
+                <Thumbnail
+                  key={item._id}
+                  href="/product_details/product_canape"
+                  src={item.src}
+                  src2={item.otherSrc[1]}
+                  title={item.title}
+                  text={item.text}
+                  price={item.price}
+                  numberOfRate={item.totalVote}
+                  numberOfStar={item.stars}
+                  onClick={() => setState(item._id)}
+                />
+              </div>
+            )
+          })
+        ) : (
+          <div className="my-48">
+            <MySpinner />
+          </div>
+        )}
 
         {/* RANGEMENTS  SECTION */}
-        {rangementDB.products
-          ? rangementDB.products.map((item, index) => {
-              if (index > productsDisplayed - 1) {
-                return
-              }
-              return (
-                <div key={item._id} onClick={() => setName(item.title)}>
-                  <Thumbnail
-                    key={item._id}
-                    href="/product_details/product_rangement"
-                    src={item.src}
-                    src2={item.otherSrc[1]}
-                    title={item.title}
-                    text={item.text}
-                    price={item.price}
-                    numberOfRate={item.totalVote}
-                    numberOfStar={item.stars}
-                    onClick={() => setState(item._id)}
-                  />
-                </div>
-              )
-            })
-          : null}
+        {rangementDB.products ? (
+          rangementDB.products.map((item, index) => {
+            if (index > productsDisplayed - 1) {
+              return
+            }
+            return (
+              <div key={item._id} onClick={() => setName(item.title)}>
+                <Thumbnail
+                  key={item._id}
+                  href="/product_details/product_rangement"
+                  src={item.src}
+                  src2={item.otherSrc[1]}
+                  title={item.title}
+                  text={item.text}
+                  price={item.price}
+                  numberOfRate={item.totalVote}
+                  numberOfStar={item.stars}
+                  onClick={() => setState(item._id)}
+                />
+              </div>
+            )
+          })
+        ) : (
+          <div className="my-48">
+            <MySpinner />
+          </div>
+        )}
       </div>
     </div>
   )

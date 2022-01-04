@@ -5,6 +5,7 @@ import Context from '../context'
 
 import StarGenerator from '../misc_func/StarGenerator'
 import { getAllMagic } from '../misc_func/gettAll'
+import MySpinner from '../spinner'
 
 import { AiOutlineHeart } from 'react-icons/ai'
 import { BsBoxSeam } from 'react-icons/bs'
@@ -100,7 +101,11 @@ const BigCardNewSection = (props) => {
               </p>
             </div>
           </div>
-        ) : null}
+        ) : (
+          <div className="my-48">
+            <MySpinner />
+          </div>
+        )}
       </a>
     </Link>
   )

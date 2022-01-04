@@ -4,6 +4,7 @@ import ProductsPageTemplate from '../components/produtsPageTemplate'
 import CardDisplayer from '../components/cardDisplayer'
 
 import { getAllMagic } from '../components/misc_func/gettAll'
+import MySpinner from '../components/spinner'
 
 const Chaises = () => {
   const [value, setValue] = useState({})
@@ -29,7 +30,11 @@ const Chaises = () => {
             productsArray={value.products}
             href="/product_details/product_chaise"
           />
-        ) : null}
+        ) : (
+          <div className="my-48">
+            <MySpinner />
+          </div>
+        )}
       </ProductsPageTemplate>
     </div>
   )
