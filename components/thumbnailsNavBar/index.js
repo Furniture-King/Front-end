@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Link from 'next/link'
 
 const Card = (props) => {
@@ -19,11 +18,6 @@ const Card = (props) => {
       </a>
     </Link>
   )
-}
-Card.propTypes = {
-  href: PropTypes.string,
-  src: PropTypes.string,
-  title: PropTypes.string
 }
 
 const ThumbnailsNavBar = () => {

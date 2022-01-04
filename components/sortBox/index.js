@@ -140,16 +140,22 @@ const ColorItem = (props) => {
             className={
               show
                 ? `${color} rounded-full p-4 shadow-lg cursor-pointer 
-      m-1 transition-shadow duration-150 active:shadow-none outline-black `
+      m-1 transition-shadow duration-150 active:shadow-none outline-black`
                 : `${color} rounded-full p-4 shadow-lg cursor-pointer 
       m-1 transition-shadow duration-150 active:shadow-none `
             }
             onClick={handleClick}
             value={value}
           ></button>
-          <button className="border" onClick={deleteColorItem} value={value}>
-            click
-          </button>
+          <div className="flex justify-center">
+            <button
+              className="flex justify-center mt-1 text-color-bg-lightBrown border rounded-full w-6/12 shadow-lg active:shadow-none"
+              onClick={deleteColorItem}
+              value={value}
+            >
+              x
+            </button>
+          </div>
         </div>
       ) : (
         <button
@@ -170,46 +176,40 @@ const ColorItem = (props) => {
 
 const PriceItem = (props) => {
   const { title, value } = props
-  const [show, setShow] = useState(false)
+  // const [state, setState] = useState(true)
   const { setSortBy } = useContext(Context)
+
+  // const toggleMenu = () => {
+  //   if (state) {
+  //     setState(false)
+  //   } else {
+  //     setState(true)
+  //   }
+  // }
 
   const handleClick = (e) => {
     setSortBy(e.target.value)
-    toggleMenu()
-  }
-
-  const toggleMenu = () => {
-    if (show) {
-      setShow(false)
-    } else {
-      setShow(true)
-    }
+    // toggleMenu()
   }
 
   return (
-    <div
-      className={
-        show
-          ? ` p-1 rounded 
-    transition-shadow 
-    duration-300
-    hover:shadow-md
-    active:shadow-none
-   bg-color-bg-darkBlue 
-   text-color-bg-light`
-          : ` p-1 rounded
-    transition-shadow 
-    duration-300
-    hover:shadow-md
-    active:shadow-none
-    hover:bg-color-bg-light 
-    hover:text-color-bg-lightBrown`
-      }
+    <button
+      onClick={handleClick}
+      value={value}
+      className="p-1 mt-2 rounded
+     transition-colors
+     duration-400
+     shadow
+     hover:shadow-none
+     active:shadow-none
+      bg-color-bg-light
+      text-color-bg-lightBrown
+      active:bg-color-bg-darkBlue
+      focus:bg-color-bg-darkBlue
+      focus:text-color-bg-light"
     >
-      <button onClick={handleClick} value={value}>
-        {title}
-      </button>
-    </div>
+      {title}
+    </button>
   )
 }
 
@@ -255,9 +255,12 @@ const SortBox = (props) => {
           <div className="flex justify-around ">
             <div>
               <div>TRIER PAR</div>
-              <PriceItem title="Prix croissant" value="croissant" />
-              <PriceItem title="Prix décroissant" value="decroissant" />
-              <PriceItem title="Note clients" value="clients" />
+              <div className="flex flex-col mt-2">
+                <PriceItem title="Prix croissant" value="croissant" />
+                <PriceItem title="Prix décroissant" value="decroissant" />
+                <PriceItem title="Note clients" value="clients" />
+              </div>
+
               {/* <PriceItem title="Nom" value="nom" /> */}
             </div>
             <div>

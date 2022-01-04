@@ -24,7 +24,9 @@ module.exports = {
     }
   },
   variants: {
-    extend: {}
+    extend: {
+      extend: { backgroundColor: ['responsive', 'hover', 'focus', 'active'] }
+    }
   },
   plugins: [require('daisyui')],
   daisyui: {
@@ -36,3 +38,7 @@ module.exports = {
     rtl: false
   }
 }
+
+// variants: {
+//   extend: { backgroundColor: ['responsive', 'hover', 'focus', 'active']}
+// }
