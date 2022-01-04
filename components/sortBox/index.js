@@ -176,20 +176,10 @@ const ColorItem = (props) => {
 
 const PriceItem = (props) => {
   const { title, value } = props
-  // const [state, setState] = useState(true)
   const { setSortBy } = useContext(Context)
-
-  // const toggleMenu = () => {
-  //   if (state) {
-  //     setState(false)
-  //   } else {
-  //     setState(true)
-  //   }
-  // }
 
   const handleClick = (e) => {
     setSortBy(e.target.value)
-    // toggleMenu()
   }
 
   return (
@@ -260,8 +250,6 @@ const SortBox = (props) => {
                 <PriceItem title="Prix décroissant" value="decroissant" />
                 <PriceItem title="Note clients" value="clients" />
               </div>
-
-              {/* <PriceItem title="Nom" value="nom" /> */}
             </div>
             <div>
               <div>COULEURS</div>
