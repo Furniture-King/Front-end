@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 
 const CarouselItem = (props) => {
@@ -14,11 +13,6 @@ const CarouselItem = (props) => {
       </div>
     </div>
   )
-}
-CarouselItem.propTypes = {
-  id: PropTypes.string,
-  src: PropTypes.string,
-  text: PropTypes.string
 }
 
 const Carousel = () => {
@@ -35,22 +29,22 @@ const Carousel = () => {
         <CarouselItem
           id="item1"
           src="./images/images_Carousel/indoor_bedroom.jpg"
-          text="Lorem Ipsum"
+          text=""
         />
         <CarouselItem
           id="item2"
           src="./images/images_Carousel/indoor_living.jpg"
-          text="Lorem Ipsum"
+          text=""
         />
         <CarouselItem
           id="item3"
           src="./images/images_Carousel/indoor_living2.jpg"
-          text="Lorem Ipsum"
+          text=""
         />
         <CarouselItem
           id="item4"
           src="./images/images_Carousel/indoor_living3.jpg"
-          text="Lorem Ipsum"
+          text=""
         />
       </Slider>
     </div>

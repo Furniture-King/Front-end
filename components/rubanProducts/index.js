@@ -44,8 +44,7 @@ const RubanProduct = () => {
     getAllMagic(setRangementDB, 'rangements')
   }, [])
 
-  // console.log(chairDB.products ? chairDB.products.length : null)
-  const RandomProduct = Math.floor(Math.random() * 15)
+  const RandomProduct = Math.floor(Math.random() * 12)
 
   return (
     <div className="mx-auto my-5 w-10/12 md:w-8/12 font-poiretOne">
