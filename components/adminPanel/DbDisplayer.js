@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
+import { getItemById } from '../misc_func/gettAll'
 import StarGenerator from '../misc_func/StarGenerator'
 import MySpinner from '../spinner'
 
@@ -7,8 +8,37 @@ import { BsBoxSeam } from 'react-icons/bs'
 import { GrDocumentUpdate, GrTrash } from 'react-icons/gr'
 import { AiFillEye } from 'react-icons/ai'
 
-const DbDisplayer = (props) => {
+const MyModal = (props) => {
   const { data } = props
+
+  return (
+    <div className="modal">
+      <div className="modal-box">
+        <h1>{data}</h1>
+        <p>
+          Enim dolorem dolorum omnis atque necessitatibus. Consequatur aut
+          adipisci qui iusto illo eaque. Consequatur repudiandae et. Nulla ea
+          quasi eligendi. Saepe velit autem minima.
+        </p>
+        <div className="modal-action">
+          <label htmlFor="my-modal-2" className="btn btn-primary">
+            Accept
+          </label>
+          <label htmlFor="my-modal-2" className="btn">
+            Close
+          </label>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const DbDisplayer = (props) => {
+  const { data, db } = props
+  const [state, setState] = useState('')
+
+  // console.log(state)
+
   return (
     <div className="flex flex-wrap justify-between font-poiretOne">
       {data ? (
@@ -46,9 +76,22 @@ const DbDisplayer = (props) => {
                     <button className="border rounded-xs p-1 px-3 flex items-baseline justify-center">
                       <GrTrash />
                     </button>
-                    <button className="border rounded-xs p-1 px-3 flex items-baseline justify-center">
-                      <AiFillEye />
-                    </button>
+
+                    <label
+                      value={item._id}
+                      htmlFor="my-modal-2"
+                      className="modal-button cursor-pointer border rounded-xs p-1 px-3"
+                      onClick={() => setState(item.title)}
+                    >
+                      <AiFillEye value={item._id} />
+                    </label>
+                    <input
+                      type="checkbox"
+                      id="my-modal-2"
+                      className="modal-toggle"
+                      value={item._id}
+                    />
+                    <MyModal data={state} db={db} />
                   </div>
                 </div>
               </div>
