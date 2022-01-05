@@ -1,45 +1,7 @@
 import React, { useState } from 'react'
 
-import Dashboard from './Dashboard'
-import Users from './Users'
-import Products from './Products'
-import Orders from './Orders'
-
-const AdminButton = (props) => {
-  const { title, value, onClick } = props
-  return (
-    <button
-      onClick={onClick}
-      value={value}
-      className="border rounded-sm py-2 mt-1"
-    >
-      {title}
-    </button>
-  )
-}
-
-const MySwitcher = (props) => {
-  const { myKey } = props
-  switch (myKey) {
-    case 'dashBoard':
-      return <Dashboard title="dashboard dude!!" />
-    case 'users':
-      return <Users title="Users dude!!" />
-    case 'chaises':
-      return <Products title="chaises dude!!" />
-    case 'canapes':
-      return <Products title="canapes dude!!" />
-    case 'luminaires':
-      return <Products title="luminaires dude!!" />
-    case 'rangements':
-      return <Products title="rangements dude!!" />
-    case 'orders':
-      return <Orders />
-
-    default:
-      break
-  }
-}
+import MySwitcher from './MySwitcher'
+import AdminButton from './AdminButton'
 
 const AdminPanel = () => {
   const [title, setTitle] = useState('dashBoard')
@@ -104,8 +66,8 @@ const AdminPanel = () => {
           </div>
         </div>
         <div className="flex flex-col w-full ml-5">
-          <div>{title}</div>
-          <div className="mt-4 border">
+          <div className="capitalize text-3xl font-bold">{title}</div>
+          <div className="mt-4">
             <MySwitcher myKey={displayer} />
           </div>
         </div>

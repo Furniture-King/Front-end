@@ -3,10 +3,10 @@ import React, { useState, useContext } from 'react'
 import Context from '../context'
 import MenuItem from './MenuItem'
 import Range from './Range'
-import initialState from './initialState'
 import MyButton from './MyButton'
 import ColorItem from './ColorItem'
 import PriceItem from './PriceItem'
+import initialState from './initialState'
 
 import { FiTruck } from 'react-icons/fi'
 
