@@ -1,33 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react'
-import Link from 'next/link'
 
 import Context from '../context'
-
 import { getAllMagic } from '../misc_func/gettAll'
-import StarGenerator from '../misc_func/StarGenerator'
-
-const RubanProductItem = (props) => {
-  const { href, src, title, price, rating, onClick, starz } = props
-  return (
-    <Link href={href} passHref>
-      <a>
-        <div
-          className="m-3 rounded-md shadow-xl hover:shadow-md flex flex-col justify-center items-center border p-1"
-          onClick={onClick}
-        >
-          <div>
-            <img src={src} />
-          </div>
-          <div className="font-semibold">{title}</div>
-          <div>{price} €</div>
-          <div>
-            <StarGenerator totalVotes={starz} stars={rating} />
-          </div>
-        </div>
-      </a>
-    </Link>
-  )
-}
+import RubanProductItem from './RubanProductItem'
 
 const RubanProduct = () => {
   const { setName } = useContext(Context)
@@ -44,7 +19,7 @@ const RubanProduct = () => {
     getAllMagic(setRangementDB, 'rangements')
   }, [])
 
-  const RandomProduct = Math.floor(Math.random() * 12)
+  const RandomProduct = Math.floor(Math.random() * 15)
 
   return (
     <div className="mx-auto my-5 w-10/12 md:w-8/12 font-poiretOne">

@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { ImSearch } from 'react-icons/im'
 import { AiFillLock } from 'react-icons/ai'
 import { MdShoppingCart } from 'react-icons/md'
 
