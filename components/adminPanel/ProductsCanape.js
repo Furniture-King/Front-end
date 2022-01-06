@@ -16,7 +16,7 @@ const ProductsCanape = (props) => {
     <div>
       <div>{title}</div>
       <div>
-        <DbDisplayer data={dB.products} />
+        <DbDisplayer data={dB.products} db="canapes" />
       </div>
     </div>
   )

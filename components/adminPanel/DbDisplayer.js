@@ -9,7 +9,7 @@ import { GrDocumentUpdate, GrTrash } from 'react-icons/gr'
 import { AiFillEye, AiFillCloseCircle } from 'react-icons/ai'
 
 const MyModal = (props) => {
-  const { data } = props
+  const { data, db } = props
   const [value, setValue] = useState('')
   const [state, setState] = useState({})
 
@@ -18,7 +18,7 @@ const MyModal = (props) => {
   }, [data])
 
   useEffect(() => {
-    getItemById(setState, 'chaises', value)
+    getItemById(setState, db, value)
   }, [value])
 
   console.log(state)
@@ -26,21 +26,19 @@ const MyModal = (props) => {
   return (
     <div className="modal">
       <div className="modal-box">
+        <div
+          className="modal-action p-0 m-0"
+          style={{ transform: 'translateY(-60%) translate(2%)' }}
+        >
+          <label htmlFor="my-modal-2" className="cursor-pointer">
+            <AiFillCloseCircle />
+          </label>
+        </div>
         {state.products ? (
           <div>
-            <div
-              className="modal-action p-0 m-0"
-              style={{ transform: 'translateY(-60%) translate(2%)' }}
-            >
-              <label htmlFor="my-modal-2" className="cursor-pointer">
-                <AiFillCloseCircle />
-              </label>
-            </div>
             <img src={state.products.src} />
             <div className="flex justify-around items-centerOui my-3">
               <img src={state.products.src} className="border w-32" />
-              {/* <img src={state.products.otherSrc[0]} className="border w-32" />
-              <img src={state.products.otherSrc[1]} className="border w-32" /> */}
               {state.products.otherSrc ? (
                 state.products.otherSrc.map((item) => {
                   return <img src={item} className="border w-32 p-2" />
@@ -71,9 +69,7 @@ const MyModal = (props) => {
             </div>
           </div>
         ) : (
-          <div className="m-96">
-            <MySpinner />
-          </div>
+          <MySpinner />
         )}
       </div>
     </div>

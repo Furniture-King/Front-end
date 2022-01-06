@@ -16,7 +16,7 @@ const ProductsRangement = (props) => {
     <div>
       <div>{title}</div>
       <div>
-        <DbDisplayer data={dB.products} />
+        <DbDisplayer data={dB.products} db="rangements" />
       </div>
     </div>
   )
