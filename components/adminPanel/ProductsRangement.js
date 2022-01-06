@@ -8,15 +8,15 @@ const ProductsRangement = (props) => {
   const [dB, setDB] = useState({})
 
   useEffect(() => {
-    getAllMagic(setDB, 'rangements')
+    getAllMagic(setDB, title)
   }, [])
-  console.log(dB)
+  // console.log(dB)
+  // console.log(title)
 
   return (
     <div>
-      <div>{title}</div>
       <div>
-        <DbDisplayer data={dB.products} db="rangements" />
+        <DbDisplayer data={dB.products} db={title} />
       </div>
     </div>
   )

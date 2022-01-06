@@ -21,7 +21,7 @@ const MyModal = (props) => {
     getItemById(setState, db, value)
   }, [value])
 
-  console.log(state)
+  // console.log(state)
 
   return (
     <div className="modal">
@@ -30,7 +30,7 @@ const MyModal = (props) => {
           className="modal-action p-0 m-0"
           style={{ transform: 'translateY(-60%) translate(2%)' }}
         >
-          <label htmlFor="my-modal-2" className="cursor-pointer">
+          <label htmlFor="my-modal" className="cursor-pointer">
             <AiFillCloseCircle />
           </label>
         </div>
@@ -40,8 +40,10 @@ const MyModal = (props) => {
             <div className="flex justify-around items-centerOui my-3">
               <img src={state.products.src} className="border w-32" />
               {state.products.otherSrc ? (
-                state.products.otherSrc.map((item) => {
-                  return <img src={item} className="border w-32 p-2" />
+                state.products.otherSrc.map((item, index) => {
+                  return (
+                    <img src={item} key={index} className="border w-32 p-2" />
+                  )
                 })
               ) : (
                 <MySpinner />
@@ -71,6 +73,60 @@ const MyModal = (props) => {
         ) : (
           <MySpinner />
         )}
+      </div>
+    </div>
+  )
+}
+
+const MyTrashModal = (props) => {
+  const { data, db } = props
+  const [value, setValue] = useState('')
+  const [state, setState] = useState({})
+
+  useEffect(() => {
+    setValue(data)
+  }, [data])
+
+  useEffect(() => {
+    getItemById(setState, db, value)
+  }, [value])
+
+  return (
+    <div className="modal">
+      <div className="modal-box">
+        {state.products ? (
+          <div>
+            <div className="flex justify-between font-bold border-b-2 pb-2">
+              <div className="flex items-center">
+                <img src={state.products.src} className="w-16" />
+                <div className="text-3xl">{state.products.title}</div>
+              </div>
+              <div className="modal-action p-0 m-0">
+                <label htmlFor="my-modal-2" className="cursor-pointer">
+                  <AiFillCloseCircle />
+                </label>
+              </div>
+            </div>
+            <p className="mt-2 font-raleway">
+              Etes-vous sur de vouloir supprimer{' '}
+              <span className="font-bold text-error underline uppercase">
+                definitivement
+              </span>{' '}
+              l'article
+              <span className="text-error font-bold">
+                {' '}
+                {state.products.title}
+              </span>{' '}
+              de votre base de données ?
+            </p>
+          </div>
+        ) : null}
+
+        <div className="modal-action font-raleway">
+          <label htmlFor="my-modal-2" className="btn btn-error">
+            Accept
+          </label>
+        </div>
       </div>
     </div>
   )
@@ -114,13 +170,28 @@ const DbDisplayer = (props) => {
                     <button className="border rounded-xs p-1 px-3 flex items-baseline justify-center">
                       <GrDocumentUpdate />
                     </button>
-                    <button className="border rounded-xs p-1 px-3 flex items-baseline justify-center">
-                      <GrTrash />
-                    </button>
 
+                    {/* modal trash  */}
                     <label
                       value={item._id}
                       htmlFor="my-modal-2"
+                      className="modal-button cursor-pointer border rounded-xs p-1 px-3"
+                      onClick={() => setState(item._id)}
+                    >
+                      <GrTrash />
+                    </label>
+                    <input
+                      type="checkbox"
+                      id="my-modal-2"
+                      className="modal-toggle"
+                      value={item._id}
+                    />
+                    <MyTrashModal data={state} db={db} />
+
+                    {/* modal preview  */}
+                    <label
+                      value={item._id}
+                      htmlFor="my-modal"
                       className="modal-button cursor-pointer border rounded-xs p-1 px-3"
                       onClick={() => setState(item._id)}
                     >
@@ -128,7 +199,7 @@ const DbDisplayer = (props) => {
                     </label>
                     <input
                       type="checkbox"
-                      id="my-modal-2"
+                      id="my-modal"
                       className="modal-toggle"
                       value={item._id}
                     />
