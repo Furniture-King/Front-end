@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { getItemById } from '../misc_func/gettAll'
+import { getItemById, deleteRecord } from '../misc_func/gettAll'
 import StarGenerator from '../misc_func/StarGenerator'
 import MySpinner from '../spinner'
 
@@ -91,6 +91,10 @@ const MyTrashModal = (props) => {
     getItemById(setState, db, value)
   }, [value])
 
+  const handleClick = () => {
+    deleteRecord(db, value)
+  }
+
   return (
     <div className="modal">
       <div className="modal-box">
@@ -123,7 +127,11 @@ const MyTrashModal = (props) => {
         ) : null}
 
         <div className="modal-action font-raleway">
-          <label htmlFor="my-modal-2" className="btn btn-error">
+          <label
+            htmlFor="my-modal-2"
+            className="btn btn-error"
+            onClick={handleClick}
+          >
             Accept
           </label>
         </div>
