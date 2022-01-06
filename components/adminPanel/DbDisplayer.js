@@ -6,28 +6,75 @@ import MySpinner from '../spinner'
 
 import { BsBoxSeam } from 'react-icons/bs'
 import { GrDocumentUpdate, GrTrash } from 'react-icons/gr'
-import { AiFillEye } from 'react-icons/ai'
+import { AiFillEye, AiFillCloseCircle } from 'react-icons/ai'
 
 const MyModal = (props) => {
   const { data } = props
+  const [value, setValue] = useState('')
+  const [state, setState] = useState({})
+
+  useEffect(() => {
+    setValue(data)
+  }, [data])
+
+  useEffect(() => {
+    getItemById(setState, 'chaises', value)
+  }, [value])
+
+  console.log(state)
 
   return (
     <div className="modal">
       <div className="modal-box">
-        <h1>{data}</h1>
-        <p>
-          Enim dolorem dolorum omnis atque necessitatibus. Consequatur aut
-          adipisci qui iusto illo eaque. Consequatur repudiandae et. Nulla ea
-          quasi eligendi. Saepe velit autem minima.
-        </p>
-        <div className="modal-action">
-          <label htmlFor="my-modal-2" className="btn btn-primary">
-            Accept
-          </label>
-          <label htmlFor="my-modal-2" className="btn">
-            Close
-          </label>
-        </div>
+        {state.products ? (
+          <div>
+            <div
+              className="modal-action p-0 m-0"
+              style={{ transform: 'translateY(-60%) translate(2%)' }}
+            >
+              <label htmlFor="my-modal-2" className="cursor-pointer">
+                <AiFillCloseCircle />
+              </label>
+            </div>
+            <img src={state.products.src} />
+            <div className="flex justify-around items-centerOui my-3">
+              <img src={state.products.src} className="border w-32" />
+              {/* <img src={state.products.otherSrc[0]} className="border w-32" />
+              <img src={state.products.otherSrc[1]} className="border w-32" /> */}
+              {state.products.otherSrc ? (
+                state.products.otherSrc.map((item) => {
+                  return <img src={item} className="border w-32 p-2" />
+                })
+              ) : (
+                <MySpinner />
+              )}
+            </div>
+
+            <div className="flex justify-between">
+              <h1 className="font-bold">{state.products.title}</h1>
+              <div>{state.products.price} €</div>
+              <StarGenerator
+                totalVotes={state.products.totalVote}
+                stars={state.products.stars}
+              />
+              <div className="flex items-center">
+                <span className="mr-1">
+                  <BsBoxSeam />
+                </span>
+                {state.products.stock}
+              </div>
+            </div>
+            <div className="flex flex-col font-raleway text-sm">
+              <p className="my-2">{state.products.text}</p>
+              <p className="mb-2">{state.products.bigText1}</p>
+              <p>{state.products.bigText2}</p>
+            </div>
+          </div>
+        ) : (
+          <div className="m-96">
+            <MySpinner />
+          </div>
+        )}
       </div>
     </div>
   )
@@ -36,8 +83,6 @@ const MyModal = (props) => {
 const DbDisplayer = (props) => {
   const { data, db } = props
   const [state, setState] = useState('')
-
-  // console.log(state)
 
   return (
     <div className="flex flex-wrap justify-between font-poiretOne">
@@ -81,7 +126,7 @@ const DbDisplayer = (props) => {
                       value={item._id}
                       htmlFor="my-modal-2"
                       className="modal-button cursor-pointer border rounded-xs p-1 px-3"
-                      onClick={() => setState(item.title)}
+                      onClick={() => setState(item._id)}
                     >
                       <AiFillEye value={item._id} />
                     </label>
