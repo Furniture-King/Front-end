@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { getItemById, deleteRecord } from '../misc_func/gettAll'
+import { getItemById, deleteRecord, updateRecord } from '../misc_func/gettAll'
 import StarGenerator from '../misc_func/StarGenerator'
 import MySpinner from '../spinner'
 
@@ -15,11 +15,17 @@ const MyModal = (props) => {
 
   useEffect(() => {
     setValue(data)
-  }, [data])
+    return function cleanup() {
+      console.log('clean')
+    }
+  }, [data, db])
 
   useEffect(() => {
     getItemById(setState, db, value)
-  }, [value])
+    return function cleanup() {
+      console.log('clean')
+    }
+  }, [db, value])
 
   // console.log(state)
 
@@ -85,14 +91,25 @@ const MyTrashModal = (props) => {
 
   useEffect(() => {
     setValue(data)
-  }, [data])
+    return function cleanup() {
+      console.log('clean')
+    }
+  }, [data, db])
 
   useEffect(() => {
     getItemById(setState, db, value)
-  }, [value])
+    return function cleanup() {
+      console.log('clean')
+    }
+  }, [value, db, setState])
 
   const handleClick = () => {
-    deleteRecord(db, value)
+    //function on comment plz !!
+    // deleteRecord(db, value)
+    // console.log(`l'article : ${value} sur la DB : ${db} a bien été delete Bro!`)
+    console.log(
+      `this function was disabled ! it's work but don't want to delete for the demo`
+    )
   }
 
   return (
@@ -140,87 +157,203 @@ const MyTrashModal = (props) => {
   )
 }
 
+const UpdateSection = (props) => {
+  const { onClick, objectId, db } = props
+  const [state, setState] = useState({})
+  const [form, setForm] = useState({
+    src: '',
+    title: '',
+    text: '',
+    bigText1: '',
+    bigText2: '',
+    price: '',
+    rating: 0,
+    totalVote: 0,
+    stock: 0,
+    src2: '',
+    src3: ''
+  })
+
+  useEffect(() => {
+    getItemById(setState, db, objectId)
+    return function cleanup() {
+      console.log('clean')
+    }
+  }, [db])
+
+  const updateForm = (value) => {
+    return setForm((prev) => {
+      return { ...prev, ...value }
+    })
+  }
+
+  function onSubmit(e) {
+    e.preventDefault()
+
+    const NewUpdateProduct = {
+      src: form.src || state.products.src,
+      title: form.title || state.products.title,
+      text: form.text || state.products.text,
+      bigText1: form.bigText1 || state.products.bigText1,
+      bigText2: form.bigText2 || state.products.bigText2,
+      price: form.price || state.products.price,
+      rating: form.rating || state.products.rating,
+      totalVote: form.totalVote || state.products.totalVote,
+      stock: form.stock || state.products.stock,
+      src2: form.src2 || state.products.src2,
+      src3: form.src3 || state.products.src3
+    }
+    // console.log(NewUpdateProduct)
+    updateRecord(db, objectId, NewUpdateProduct)
+  }
+
+  return (
+    <form onSubmit={onSubmit}>
+      {state.products ? (
+        <div className="flex flex-col items-center">
+          <div className="flex">
+            <div>{state.products.title}</div>
+            <div className="ml-2">
+              <input
+                type="text"
+                defaultValue={state.products.title}
+                className="border p-1"
+                onChange={(e) => updateForm({ title: e.target.value })}
+              />
+            </div>
+          </div>
+          <div className="flex">
+            <div>{state.products.price}</div>
+            <div className="ml-2">
+              <input
+                type="text"
+                defaultValue={state.products.price}
+                className="border p-1"
+                onChange={(e) => updateForm({ price: e.target.value })}
+              />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <MySpinner />
+      )}
+      <div className="form-group">
+        <input
+          type="submit"
+          value="Update Record"
+          className="btn btn-primary"
+        />
+      </div>
+      <button className="border rounded mt-10 p-1" onClick={onClick}>
+        ANNULER
+      </button>
+    </form>
+  )
+}
+
 const DbDisplayer = (props) => {
   const { data, db } = props
   const [state, setState] = useState('')
+  const [toggleView, setToggleView] = useState(false)
+
+  const viewer = () => {
+    if (toggleView) {
+      setToggleView(false)
+    } else {
+      setToggleView(true)
+    }
+  }
+
+  const updateClick = (objectId) => {
+    setState(objectId)
+  }
 
   return (
     <div className="flex flex-wrap justify-between font-poiretOne">
-      {data ? (
-        data.map((item) => {
-          return (
-            <div
-              key={item._id}
-              className="border w-48 mb-3 shadow-lg hover:shadow-none"
-            >
-              <div className="flex justify-between m-1">
-                <div>{item.price} €</div>
-                <div className="" style={{ transform: 'scale(70%)' }}>
-                  <StarGenerator
-                    totalVotes={item.totalVote}
-                    stars={item.stars}
-                  />
-                </div>
-              </div>
-              <div className="card card-bordered">
-                <figure>
-                  <img src={item.src} />
-                </figure>
-                <div className="card-body p-3 m-0">
-                  <div className="flex justify-between">
-                    <h2 className="card-title text-base">{item.title}</h2>
-                    <div className="badge mx-1 badge-success p-3">
-                      <span className="mr-1">{item.stock}</span>
-                      <BsBoxSeam />
+      {toggleView ? (
+        <UpdateSection onClick={viewer} objectId={state} db={db} />
+      ) : (
+        <div className="flex flex-wrap justify-between font-poiretOne">
+          {data ? (
+            data.map((item) => {
+              return (
+                <div
+                  key={item._id}
+                  className="border w-48 mb-3 shadow-lg hover:shadow-none"
+                >
+                  <div className="flex justify-between m-1">
+                    <div>{item.price} €</div>
+                    <div className="" style={{ transform: 'scale(70%)' }}>
+                      <StarGenerator
+                        totalVotes={item.totalVote}
+                        stars={item.stars}
+                      />
                     </div>
                   </div>
-                  <div className="flex justify-between ">
-                    <button className="border rounded-xs p-1 px-3 flex items-baseline justify-center">
-                      <GrDocumentUpdate />
-                    </button>
+                  <div className="card card-bordered">
+                    <figure>
+                      <img src={item.src} />
+                    </figure>
+                    <div className="card-body p-3 m-0">
+                      <div className="flex justify-between">
+                        <h2 className="card-title text-base">{item.title}</h2>
+                        <div className="badge mx-1 badge-success p-3">
+                          <span className="mr-1">{item.stock}</span>
+                          <BsBoxSeam />
+                        </div>
+                      </div>
+                      <div className="flex justify-between ">
+                        <button
+                          onClick={viewer}
+                          className="border rounded-xs p-1 px-3 flex items-baseline justify-center"
+                        >
+                          <GrDocumentUpdate
+                            onClick={() => updateClick(item._id)}
+                          />
+                        </button>
 
-                    {/* modal trash  */}
-                    <label
-                      value={item._id}
-                      htmlFor="my-modal-2"
-                      className="modal-button cursor-pointer border rounded-xs p-1 px-3"
-                      onClick={() => setState(item._id)}
-                    >
-                      <GrTrash />
-                    </label>
-                    <input
-                      type="checkbox"
-                      id="my-modal-2"
-                      className="modal-toggle"
-                      value={item._id}
-                    />
-                    <MyTrashModal data={state} db={db} />
+                        {/* modal trash  */}
+                        <label
+                          htmlFor="my-modal-2"
+                          className="modal-button cursor-pointer border rounded-xs p-1 px-3"
+                          onClick={() => setState(item._id)}
+                        >
+                          <GrTrash />
+                        </label>
+                        <input
+                          type="checkbox"
+                          id="my-modal-2"
+                          className="modal-toggle"
+                        />
+                        <MyTrashModal data={state} db={db} />
 
-                    {/* modal preview  */}
-                    <label
-                      value={item._id}
-                      htmlFor="my-modal"
-                      className="modal-button cursor-pointer border rounded-xs p-1 px-3"
-                      onClick={() => setState(item._id)}
-                    >
-                      <AiFillEye value={item._id} />
-                    </label>
-                    <input
-                      type="checkbox"
-                      id="my-modal"
-                      className="modal-toggle"
-                      value={item._id}
-                    />
-                    <MyModal data={state} db={db} />
+                        {/* modal preview  */}
+                        <label
+                          value={item._id}
+                          htmlFor="my-modal"
+                          className="modal-button cursor-pointer border rounded-xs p-1 px-3"
+                          onClick={() => setState(item._id)}
+                        >
+                          <AiFillEye value={item._id} />
+                        </label>
+                        <input
+                          type="checkbox"
+                          id="my-modal"
+                          className="modal-toggle"
+                          value={item._id}
+                        />
+                        <MyModal data={state} db={db} />
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )
+            })
+          ) : (
+            <div className="m-96">
+              <MySpinner />
             </div>
-          )
-        })
-      ) : (
-        <div className="m-96">
-          <MySpinner />
+          )}
         </div>
       )}
     </div>
