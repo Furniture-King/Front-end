@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
-import { getAllMagic } from '../misc_func/gettAll'
-import DbDisplayer from './DbDisplayer'
+import { getAllMagic } from '../../misc_func/gettAll'
+import DbDisplayer from '../dbDisplayer'
 
-const ProductsRangement = (props) => {
+const ProductsCanape = (props) => {
   const { title } = props
   const [dB, setDB] = useState({})
 
@@ -11,7 +11,6 @@ const ProductsRangement = (props) => {
     getAllMagic(setDB, title)
   }, [])
   // console.log(dB)
-  // console.log(title)
 
   return (
     <div>
@@ -22,4 +21,4 @@ const ProductsRangement = (props) => {
   )
 }
 
-export default ProductsRangement
+export default ProductsCanape

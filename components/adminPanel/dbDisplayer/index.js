@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
-import { getItemById, deleteRecord, updateRecord } from '../misc_func/gettAll'
-import StarGenerator from '../misc_func/StarGenerator'
-import MySpinner from '../spinner'
+import { getItemById, deleteRecord } from '../../misc_func/gettAll'
+import StarGenerator from '../../misc_func/StarGenerator'
+import MySpinner from '../../spinner'
+import UpdateSection from './UpdateSection'
 
 import { BsBoxSeam } from 'react-icons/bs'
 import { GrDocumentUpdate, GrTrash } from 'react-icons/gr'
@@ -154,100 +155,6 @@ const MyTrashModal = (props) => {
         </div>
       </div>
     </div>
-  )
-}
-
-const UpdateSection = (props) => {
-  const { onClick, objectId, db } = props
-  const [state, setState] = useState({})
-  const [form, setForm] = useState({
-    src: '',
-    title: '',
-    text: '',
-    bigText1: '',
-    bigText2: '',
-    price: '',
-    rating: 0,
-    totalVote: 0,
-    stock: 0,
-    src2: '',
-    src3: ''
-  })
-
-  useEffect(() => {
-    getItemById(setState, db, objectId)
-    return function cleanup() {
-      console.log('clean')
-    }
-  }, [db])
-
-  const updateForm = (value) => {
-    return setForm((prev) => {
-      return { ...prev, ...value }
-    })
-  }
-
-  function onSubmit(e) {
-    e.preventDefault()
-
-    const NewUpdateProduct = {
-      src: form.src || state.products.src,
-      title: form.title || state.products.title,
-      text: form.text || state.products.text,
-      bigText1: form.bigText1 || state.products.bigText1,
-      bigText2: form.bigText2 || state.products.bigText2,
-      price: form.price || state.products.price,
-      rating: form.rating || state.products.rating,
-      totalVote: form.totalVote || state.products.totalVote,
-      stock: form.stock || state.products.stock,
-      src2: form.src2 || state.products.src2,
-      src3: form.src3 || state.products.src3
-    }
-    // console.log(NewUpdateProduct)
-    updateRecord(db, objectId, NewUpdateProduct)
-  }
-
-  return (
-    <form onSubmit={onSubmit}>
-      {state.products ? (
-        <div className="flex flex-col items-center">
-          <div className="flex">
-            <div>{state.products.title}</div>
-            <div className="ml-2">
-              <input
-                type="text"
-                defaultValue={state.products.title}
-                className="border p-1"
-                onChange={(e) => updateForm({ title: e.target.value })}
-              />
-            </div>
-          </div>
-          <div className="flex">
-            <div>{state.products.price}</div>
-            <div className="ml-2">
-              <input
-                type="text"
-                defaultValue={state.products.price}
-                className="border p-1"
-                onChange={(e) => updateForm({ price: e.target.value })}
-              />
-            </div>
-          </div>
-        </div>
-      ) : (
-        <MySpinner />
-      )}
-      <div className="form-group">
-        <input
-          type="submit"
-          value="Update Record"
-          className="btn btn-primary"
-        />
-      </div>
-      <button className="border rounded mt-10 p-1" onClick={onClick}>
-        ANNULER
-      </button>
-    </form>
   )
 }
 

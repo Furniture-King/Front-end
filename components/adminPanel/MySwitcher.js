@@ -1,12 +1,12 @@
 import React from 'react'
 
-import Dashboard from './Dashboard'
-import Users from './Users'
-import ProductsChair from './ProductsChair'
-import ProductsCanape from './ProductsCanape'
-import ProductsLuminaire from './ProductsLuminaire'
-import ProductsRangement from './ProductsRangement'
-import Orders from './Orders'
+import Dashboard from './section/Dashboard'
+import Users from './section/Users'
+import ProductsChair from './section/ProductsChair'
+import ProductsCanape from './section/ProductsCanape'
+import ProductsLuminaire from './section/ProductsLuminaire'
+import ProductsRangement from './section/ProductsRangement'
+import Orders from './section/Orders'
 
 const MySwitcher = (props) => {
   const { myKey } = props

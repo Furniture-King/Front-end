@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 
-import { getAllMagic } from '../misc_func/gettAll'
-import DbDisplayer from './DbDisplayer'
+// import { getAllMagic } from '../misc_func/gettAll'
+import { getAllMagic } from '../../misc_func/gettAll'
+// import DbDisplayer from './dbDisplayer'
+import DbDisplayer from '../dbDisplayer'
 
-const ProductsCanape = (props) => {
+const ProductsChair = (props) => {
   const { title } = props
   const [dB, setDB] = useState({})
 
@@ -21,4 +23,4 @@ const ProductsCanape = (props) => {
   )
 }
 
-export default ProductsCanape
+export default ProductsChair

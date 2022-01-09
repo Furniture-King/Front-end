@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
-import { getAllMagic } from '../misc_func/gettAll'
-import DbDisplayer from './DbDisplayer'
+import { getAllMagic } from '../../misc_func/gettAll'
+import DbDisplayer from '../dbDisplayer'
 
 const ProductsLuminaire = (props) => {
   const { title } = props

@@ -15,8 +15,8 @@ const AdminPanel = () => {
   return (
     <div className="w-10/12 md:w-8/12 mx-auto ">
       <div className="flex">
-        <div className=" w-3/12 font-poiretOne">
-          <div className="mr-5">
+        <div className=" w-3/12 font-poiretOne bg-color-bg-darkBlue text-color-bg-ultraLight content-center">
+          <div className="px-2">
             <div className="mx-auto rounded-full p-8 w-3/12 m-2 border shadow-lg"></div>
             <div className="flex justify-center">John Doe</div>
             <div className="flex justify-center text-xs">Admin Master</div>
