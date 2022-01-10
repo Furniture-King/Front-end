@@ -45,3 +45,13 @@ export const updateRecord = (db, id, myUpdate) => {
       console.log(error)
     })
 }
+
+// Create a new record
+export const addNewProducts = (db, myUpdate) => {
+  axios
+    .post(`http://localhost:5000/${db}/add`, myUpdate)
+    .then((res) => console.log(res.data))
+    .catch(function (error) {
+      console.log(error)
+    })
+}

@@ -10,6 +10,7 @@ import { BsBoxSeam } from 'react-icons/bs'
 import { GrDocumentUpdate, GrTrash } from 'react-icons/gr'
 import { AiFillEye, AiFillCloseCircle } from 'react-icons/ai'
 import { GiDatabase } from 'react-icons/gi'
+import { TiDocumentAdd } from 'react-icons/ti'
 
 const MyModal = (props) => {
   const { data, db } = props
@@ -162,7 +163,19 @@ const MyTrashModal = (props) => {
 
 const CreateButton = (props) => {
   const { onClick } = props
-  return <button onClick={onClick}>plop</button>
+  return (
+    <button
+      onClick={onClick}
+      className="rounded-lg transition-color duration-500 
+                shadow-lg active:shadow-none hover:shadow-md
+                bg-color-bg-lightBrown 
+                text-color-font-white 
+                hover:bg-color-font-white 
+                hover:text-success"
+    >
+      <TiDocumentAdd size={50} />
+    </button>
+  )
 }
 
 const DbDisplayer = (props) => {
@@ -193,6 +206,7 @@ const DbDisplayer = (props) => {
 
   return (
     <div className="flex flex-wrap justify-between font-poiretOne">
+      {toggleView2 ? <CreateSection db={db} onClick={viewCreate} /> : null}
       {toggleView ? (
         <UpdateSection onClick={viewUpdate} objectId={state} db={db} />
       ) : (
@@ -204,9 +218,8 @@ const DbDisplayer = (props) => {
                 Collection/{db}
               </span>
             </div>
-            <CreateButton onClick={viewCreate} />
+            {!toggleView2 ? <CreateButton onClick={viewCreate} /> : null}
           </div>
-          {toggleView2 ? <CreateSection /> : null}
           {data ? (
             data.map((item) => {
               return (
