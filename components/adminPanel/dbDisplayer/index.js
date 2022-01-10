@@ -4,6 +4,7 @@ import { getItemById, deleteRecord } from '../../misc_func/gettAll'
 import StarGenerator from '../../misc_func/StarGenerator'
 import MySpinner from '../../spinner'
 import UpdateSection from './UpdateSection'
+import CreateSection from './CreateSection'
 
 import { BsBoxSeam } from 'react-icons/bs'
 import { GrDocumentUpdate, GrTrash } from 'react-icons/gr'
@@ -159,16 +160,30 @@ const MyTrashModal = (props) => {
   )
 }
 
+const CreateButton = (props) => {
+  const { onClick } = props
+  return <button onClick={onClick}>plop</button>
+}
+
 const DbDisplayer = (props) => {
   const { data, db } = props
   const [state, setState] = useState('')
   const [toggleView, setToggleView] = useState(false)
+  const [toggleView2, setToggleView2] = useState(false)
 
-  const viewer = () => {
+  const viewUpdate = () => {
     if (toggleView) {
       setToggleView(false)
     } else {
       setToggleView(true)
+    }
+  }
+
+  const viewCreate = () => {
+    if (toggleView2) {
+      setToggleView2(false)
+    } else {
+      setToggleView2(true)
     }
   }
 
@@ -179,15 +194,19 @@ const DbDisplayer = (props) => {
   return (
     <div className="flex flex-wrap justify-between font-poiretOne">
       {toggleView ? (
-        <UpdateSection onClick={viewer} objectId={state} db={db} />
+        <UpdateSection onClick={viewUpdate} objectId={state} db={db} />
       ) : (
         <div className="flex flex-wrap justify-between font-poiretOne">
-          <div className="flex items-center mb-5 capitalize text-2xl font-bold  p-5 shadow-sm w-full">
-            <GiDatabase size={50} />{' '}
-            <span className="ml-5 font-raleway font-bold text-color-bg-darkBlue">
-              Collection/{db}
-            </span>
+          <div className="flex justify-between  mb-5 capitalize text-2xl font-bold  p-5 shadow-sm w-full">
+            <div className="flex items-center">
+              <GiDatabase size={50} />{' '}
+              <span className="ml-5 font-raleway font-bold text-color-bg-darkBlue">
+                Collection/{db}
+              </span>
+            </div>
+            <CreateButton onClick={viewCreate} />
           </div>
+          {toggleView2 ? <CreateSection /> : null}
           {data ? (
             data.map((item) => {
               return (
@@ -218,7 +237,7 @@ const DbDisplayer = (props) => {
                       </div>
                       <div className="flex justify-between ">
                         <button
-                          onClick={viewer}
+                          onClick={viewUpdate}
                           className="border rounded-xs p-1 px-3 flex items-baseline justify-center"
                         >
                           <GrDocumentUpdate

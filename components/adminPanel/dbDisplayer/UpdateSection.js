@@ -30,7 +30,7 @@ const UpdateTextAreaItem = (props) => {
       <div className="ml-2">
         <textarea
           type="text"
-          value={item}
+          defaultValue={item}
           className={`border p-1 w-96 ${className}`}
           onChange={onChange}
         />
