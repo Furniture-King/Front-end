@@ -8,6 +8,7 @@ import UpdateSection from './UpdateSection'
 import { BsBoxSeam } from 'react-icons/bs'
 import { GrDocumentUpdate, GrTrash } from 'react-icons/gr'
 import { AiFillEye, AiFillCloseCircle } from 'react-icons/ai'
+import { GiDatabase } from 'react-icons/gi'
 
 const MyModal = (props) => {
   const { data, db } = props
@@ -181,12 +182,18 @@ const DbDisplayer = (props) => {
         <UpdateSection onClick={viewer} objectId={state} db={db} />
       ) : (
         <div className="flex flex-wrap justify-between font-poiretOne">
+          <div className="flex items-center mb-5 capitalize text-2xl font-bold  p-5 shadow-sm w-full">
+            <GiDatabase size={50} />{' '}
+            <span className="ml-5 font-raleway font-bold text-color-bg-darkBlue">
+              Collection/{db}
+            </span>
+          </div>
           {data ? (
             data.map((item) => {
               return (
                 <div
                   key={item._id}
-                  className="border w-48 mb-3 shadow-lg hover:shadow-none"
+                  className="border w-48 mb-3 shadow-lg hover:shadow-none bg-white"
                 >
                   <div className="flex justify-between m-1">
                     <div>{item.price} €</div>

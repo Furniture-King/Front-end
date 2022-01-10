@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-// import { getAllMagic } from '../misc_func/gettAll'
 import { getAllMagic } from '../../misc_func/gettAll'
-// import DbDisplayer from './dbDisplayer'
 import DbDisplayer from '../dbDisplayer'
 
 const ProductsChair = (props) => {

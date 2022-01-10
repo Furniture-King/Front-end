@@ -13,7 +13,7 @@ const Admin_panel = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar2 />
-      <MainTitle text="Welcome Admin" />
+      <MainTitle text="Welcome Admin" className="w-12/12 md:w-10/12" />
       <div className="mt-5">
         <AdminPanel />
       </div>
