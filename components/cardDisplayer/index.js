@@ -12,7 +12,7 @@ const CardDisplayer = (props) => {
   return (
     <div className="mx-auto w-10/12 md:w-8/12">
       <div className="flex flex-wrap justify-center md:justify-between">
-        {productsArray.map((productItem, index) => {
+        {productsArray.map((productItem) => {
           return (
             <div
               onClick={() => setName(productItem.title)}

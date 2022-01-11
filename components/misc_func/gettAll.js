@@ -3,7 +3,7 @@ import axios from 'axios'
 // Get all products.
 export const getAllMagic = (seter, productType) => {
   axios
-    .get(`http://localhost:5000/${productType}`)
+    .get(`http://localhost:5000/${productType}/`)
     .then((response) => {
       seter({ products: response.data })
     })

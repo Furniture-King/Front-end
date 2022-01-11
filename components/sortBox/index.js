@@ -9,6 +9,7 @@ import PriceItem from './PriceItem'
 import initialState from './initialState'
 
 import { FiTruck } from 'react-icons/fi'
+import { BsSortDown } from 'react-icons/bs'
 
 const SortBox = (props) => {
   const { dbName } = props
@@ -23,7 +24,8 @@ const SortBox = (props) => {
   initialState.minPrice = downPrice
   initialState.maxPrice = upPrice
 
-  const toggleMenu = () => {
+  const toggleMenu = (e) => {
+    e.preventDefault()
     if (show) {
       setSortBy('')
       setColors([])
@@ -34,32 +36,49 @@ const SortBox = (props) => {
   }
 
   const handleClick = () => {
-    console.log(initialState)
+    console.log(sortBy)
   }
 
   return (
-    <div className="mx-auto w-10/12 md:w-8/12 font-raleway pt-3 ">
+    <div className="mx-auto w-10/12 md:w-8/12 font-raleway pt-0 md:pt-3 ">
       {!show ? (
-        <div className="flex justify-around" onClick={toggleMenu}>
-          <MenuItem title="TRIER PAR" />
-          <MenuItem title="COULEURS" />
-          <MenuItem title="PRIX" />
-          <MenuItem title="DÉLAIS DE LIVRAISON" />
+        <div className="w-full">
+          <div className="justify-around hidden md:flex" onClick={toggleMenu}>
+            <MenuItem title="TRIER PAR" />
+            <MenuItem title="COULEURS" />
+            <MenuItem title="PRIX" />
+            <MenuItem title="DÉLAIS DE LIVRAISON" />
+          </div>
+          <div className="flex justify-center">
+            <div
+              onClick={toggleMenu}
+              className="flex justify-center md:hidden p-1 px-10 
+              bg-color-bg-darkBlue text-color-bg-ultraLight
+              hover:bg-color-bg-lightBrown hover:text-color-bg-darkBlue
+             shadow-lg hover:shadow-none rounded-br-3xl rounded-bl-3xl w-1/12"
+            >
+              <div>
+                <BsSortDown size={25} onClick={toggleMenu} />
+              </div>
+            </div>
+          </div>
         </div>
       ) : null}
       {show ? (
         <div className="shadow-lg bg-color-bg-ultraLight">
-          <div className="flex justify-around ">
-            <div>
-              <div>TRIER PAR</div>
-              <div className="flex flex-col mt-2">
+          <div className="flex flex-col md:flex-row justify-around items-center md:items-start">
+            <div className="w-full md:w-auto">
+              <div className="flex justify-center font-bold">TRIER PAR</div>
+              <div className="flex flex-row md:flex-col mb-2 md:mt-2 md:mb-0 justify-around md:justify-start">
                 <PriceItem title="Prix croissant" value="croissant" />
                 <PriceItem title="Prix décroissant" value="decroissant" />
                 <PriceItem title="Note clients" value="clients" />
               </div>
             </div>
             <div>
-              <div>COULEURS</div>
+              <div className="flex justify-center font-bold mt-5 md:mt-0">
+                COULEURS
+              </div>
               <div className="flex mt-2">
                 <ColorItem color="bg-white" value="bg-white" />
                 <ColorItem color="bg-black" value="bg-black" />
@@ -69,13 +88,17 @@ const SortBox = (props) => {
               </div>
             </div>
             <div>
-              <div>PRIX</div>
-              <div className="flex mt-2">
+              <div className="flex justify-center font-bold mt-5 md:mt-0">
+                PRIX
+              </div>
+              <div className="flex">
                 <Range dbName={dbName} />
               </div>
             </div>
-            <div>
-              <div>DÉLAIS DE LIVRAISON</div>
+            <div className="hidden xl:block">
+              <div className="flex justify-center font-bold mt-5 md:mt-0">
+                DÉLAIS DE LIVRAISON
+              </div>
               <div className="mt-2 flex flex-col justify-center items-center">
                 <FiTruck size={35} />
                 <div className="font-bold">Livraison rapide </div>
@@ -85,8 +108,8 @@ const SortBox = (props) => {
               </div>
             </div>
           </div>
-          <div className="border-t flex justify-between">
-            <div className="mx-auto my-5">
+          <div className="border-t flex justify-between items-center w-full">
+            <div className="my-5 flex flex-col md:flex-row justify-center items-center w-full">
               <MyButton
                 title="ANNULER"
                 bgColor="bg-color-bg-lightBrown"
