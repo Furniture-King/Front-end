@@ -6,6 +6,23 @@ export const getAllMagic = (seter, productType) => {
     .get(`http://localhost:5000/${productType}/`)
     .then((response) => {
       seter({ products: response.data })
+      return { products: response.data }
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+}
+
+export const fetchDataForList = (seter, db) => {
+  axios
+    .get(`http://localhost:5000/${db}/`)
+    .then((response) => {
+      seter(
+        response.data.map((item) => {
+          return item.title
+          // return { title: item.title, id: item._id, db: 'chaises' }
+        })
+      )
     })
     .catch(function (error) {
       console.log(error)
