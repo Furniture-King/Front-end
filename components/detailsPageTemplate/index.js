@@ -19,6 +19,7 @@ const DetailsPageTemplate = (props) => {
     hrefItem2,
     hrefItem3
   } = props
+
   return (
     <div className="flex flex-col h-screen justify-between">
       <Head>

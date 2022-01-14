@@ -4,6 +4,8 @@ import Context from '../context'
 import { getAllMagic } from '../misc_func/gettAll'
 import RubanProductItem from './RubanProductItem'
 
+const RandomProduct = Math.floor(Math.random() * 15)
+
 const RubanProduct = () => {
   const { setName } = useContext(Context)
   const { setState } = useContext(Context)
@@ -18,8 +20,6 @@ const RubanProduct = () => {
     getAllMagic(setCanapeDB, 'canapes')
     getAllMagic(setRangementDB, 'rangements')
   }, [])
-
-  const RandomProduct = Math.floor(Math.random() * 15)
 
   return (
     <div className="mx-auto my-5 w-10/12 md:w-8/12 font-poiretOne">

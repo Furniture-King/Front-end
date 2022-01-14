@@ -24,7 +24,7 @@ const BigCard = (props) => {
     return function cleanup() {
       console.log('clean')
     }
-  }, [setValue, db, state])
+  }, [setValue, db])
 
   const toggleClick = () => {
     if (isShown) {

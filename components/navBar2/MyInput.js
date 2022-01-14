@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import Link from 'next/link'
+
+import Context from '../context'
 
 import { FaSearchLocation } from 'react-icons/fa'
 import { fetchDataForList } from '../misc_func/gettAll'
@@ -16,19 +19,26 @@ const inteliSearch = (arr, user) => {
 const MyInput = () => {
   const [userValue, setUserValue] = useState('')
   const [placeholder, setPlaceholder] = useState([])
-  const [state, setState] = useState([])
+  const [chaisesList, setChaisesList] = useState([])
   const [rangementsList, setRangementsList] = useState([])
   const [luminairesList, setLuminairesList] = useState([])
   const [canapesList, setCanapesList] = useState([])
+  const [myDb, setMyDb] = useState('')
+  const { state, setState } = useContext(Context)
 
   useEffect(() => {
-    fetchDataForList(setState, 'chaises')
+    fetchDataForList(setChaisesList, 'chaises')
     fetchDataForList(setRangementsList, 'rangements')
     fetchDataForList(setLuminairesList, 'luminaires')
     fetchDataForList(setCanapesList, 'canapes')
   }, [])
 
-  // console.log(state)
+  const newArr = [
+    ...rangementsList,
+    ...chaisesList,
+    ...luminairesList,
+    ...canapesList
+  ]
 
   const handleClick = () => {
     setUserValue(userWord)
@@ -38,10 +48,25 @@ const MyInput = () => {
     userWord = e.target.value
     setPlaceholder(
       inteliSearch(
-        [...rangementsList, ...state, ...luminairesList, ...canapesList],
+        [
+          ...rangementsList.map((item) => item.title),
+          ...chaisesList.map((item) => item.title),
+          ...luminairesList.map((item) => item.title),
+          ...canapesList.map((item) => item.title)
+        ],
         e.target.value
       )
     )
+  }
+
+  const handleCompare = (e) => {
+    for (let i = 0; i < newArr.length; i++) {
+      if (newArr[i].title === e) {
+        const dbName = newArr[i].db.substring(0, newArr[i].db.length - 1)
+        setMyDb(`/product_details/product_${dbName}`)
+        setState(newArr[i].id)
+      }
+    }
   }
 
   return (
@@ -50,7 +75,7 @@ const MyInput = () => {
         <div className=" rounded flex">
           <input
             onChange={handleChange}
-            className=" appearance-none placeholder-gray-500 border-b py-2 px-3 focus:outline-none bg-white bg-opacity-10 rounded"
+            className="placeholder-gray-500 border-b py-2 px-3 focus:outline-none bg-white bg-opacity-10 rounded"
           />
           <button
             type="submit"
@@ -63,16 +88,18 @@ const MyInput = () => {
         </div>
       </form>
       {placeholder && userWord ? (
-        <div className="p-2 bg-opacity-80 shadow-lg absolute top-14 w-72 rounded z-10 bg-gray-300 text-color-bg-darkBlue">
+        <div className="bg-opacity-80 shadow-lg absolute top-14 w-72 rounded z-10 bg-gray-300 text-color-bg-darkBlue">
           {placeholder && userWord
             ? placeholder.map((item, index) => {
                 return (
                   <div
                     key={index}
                     value={item}
-                    onClick={() => console.log('plop')}
+                    onMouseEnter={() => handleCompare(item)}
                   >
-                    {item}
+                    <Link href={myDb} passHref>
+                      <a className="ml-2 mt-1">{item}</a>
+                    </Link>
                   </div>
                 )
               })

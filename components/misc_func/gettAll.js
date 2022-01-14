@@ -19,8 +19,7 @@ export const fetchDataForList = (seter, db) => {
     .then((response) => {
       seter(
         response.data.map((item) => {
-          return item.title
-          // return { title: item.title, id: item._id, db: 'chaises' }
+          return { title: item.title, id: item._id, db: db }
         })
       )
     })

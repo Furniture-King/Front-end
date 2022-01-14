@@ -19,7 +19,7 @@ const ProductNavBar = () => {
 
   return (
     <div>
-      <div className="flex items-center xs:justify-center bg-color-bg-lightBrown h-16">
+      <div className=" flex items-center xs:justify-center bg-color-bg-lightBrown h-16">
         <div className="flex items-center xs:hidden">
           <button className="btn btn-square btn-ghost ">
             <HiOutlineMenu size={30} onClick={toggleMenu} />
