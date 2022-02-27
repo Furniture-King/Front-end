@@ -10,6 +10,7 @@
     "axios": "^0.24.0",
     "cross-env": "^7.0.3",
     "daisyui": "^1.16.2",
+    "formik": "^2.2.9",
     "next": "latest",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
@@ -17,7 +18,8 @@
     "react-icons": "^4.3.1",
     "react-slick": "^0.28.1",
     "slick-carousel": "^1.8.1",
-    "tw-elements": "^1.0.0-alpha3"
+    "tw-elements": "^1.0.0-alpha3",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
