@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { Formik, Form, useField } from 'formik'
 import * as Yup from 'yup'
@@ -24,6 +24,8 @@ const MyTextInput = ({ label, ...props }) => {
 }
 
 const SignupForm = () => {
+  const [signInState, setSignInState] = useState([])
+  // console.log(signInState)
   return (
     <Formik
       initialValues={{ firstName: '', lastName: '', email: '', password: '' }}
@@ -37,11 +39,17 @@ const SignupForm = () => {
         email: Yup.string().email('Invalid email address').required('Required'),
         password: Yup.string().required('Required')
       })}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2))
-          setSubmitting(false)
-        }, 400)
+      onSubmit={(values, { setSubmitting, resetForm }) => {
+        setSignInState(() => [
+          {
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            password: values.password
+          }
+        ])
+        resetForm()
+        setSubmitting(false)
       }}
     >
       <Form className="p-5 flex flex-col">
