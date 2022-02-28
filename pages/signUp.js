@@ -10,9 +10,9 @@ const SignUp = () => {
         src="./images/images_background/da-guojing-g41a0eca6f_1920.jpg"
         style={{ height: '100vh' }}
       />
-      <div className=" flex flex-col w-2/3 mx-auto">
+      <div className=" flex flex-col w-1/3 mx-auto">
         <Link href="/">
-          <a className="self-end m-5">Accueil</a>
+          <a className="self-end m-5 underline">Accueil</a>
         </Link>
 
         <div className="mt-32 w-2/3 mx-auto ">

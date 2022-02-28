@@ -1,6 +1,10 @@
 import React from 'react'
+import Link from 'next/link'
 import { Formik, Form, useField } from 'formik'
 import * as Yup from 'yup'
+
+import { AiFillGoogleCircle } from 'react-icons/ai'
+import { BsFacebook } from 'react-icons/bs'
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props)
@@ -45,14 +49,14 @@ const SignupForm = () => {
           Sign in
         </h1>
         <MyTextInput
-          label="First Name"
+          label="Prénom"
           name="firstName"
           type="text"
           placeholder="Jane"
         />
 
         <MyTextInput
-          label="Last Name"
+          label="Nom"
           name="lastName"
           type="text"
           placeholder="Doe"
@@ -65,15 +69,38 @@ const SignupForm = () => {
           placeholder="jane@Doe.com"
         />
 
-        <MyTextInput label="Password" name="password" type="password" />
+        <MyTextInput label="Mot de passe" name="password" type="password" />
 
         <button
           type="submit"
           className="rounded mt-4 shadow p-2 px-4 bg-color-bg-darkBlue text-color-bg-ultraLight  hover:shadow-sm hover:bg-color-bg-light hover:text-color-bg-darkBlue
           transition-colors duration-500"
         >
-          Submit
+          Soumettre
         </button>
+        <div className="mt-3 text-sm underline">
+          <Link href="/logIn">
+            <a>Déjà inscrit ?</a>
+          </Link>
+        </div>
+        <div className="flex flex-col mt-10 justify-between">
+          <button
+            className="btn  btn-sm"
+            type="button"
+            style={{ backgroundColor: 'rgba(21, 31, 51,1)' }}
+          >
+            <AiFillGoogleCircle size={25} className="mr-3" />
+            With Google
+          </button>
+          <button
+            className="btn  btn-sm mt-3"
+            type="button"
+            style={{ backgroundColor: 'rgba(21, 31, 51,1)' }}
+          >
+            <BsFacebook size={20} className="mr-3" />
+            With Facebook
+          </button>
+        </div>
       </Form>
     </Formik>
   )
