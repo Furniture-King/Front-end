@@ -6,10 +6,14 @@ const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props)
   return (
     <>
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <input className="text-input border" {...field} {...props} />
+      <label htmlFor={props.id || props.name} className="mt-3">
+        {label}
+      </label>
+      <input className="text-input border p-1" {...field} {...props} />
       {meta.touched && meta.error ? (
-        <div className="error border">{meta.error}</div>
+        <div className="error border border-red-500  mt-1 p-1 text-center text-red-400 bg-red-100">
+          {meta.error}
+        </div>
       ) : null}
     </>
   )
@@ -36,7 +40,10 @@ const SignupForm = () => {
         }, 400)
       }}
     >
-      <Form className="border p-5 flex flex-col w-1/4">
+      <Form className="p-5 flex flex-col">
+        <h1 className="text-center my-2 font-bold uppercase text-3xl">
+          Sign in
+        </h1>
         <MyTextInput
           label="First Name"
           name="firstName"
@@ -60,7 +67,11 @@ const SignupForm = () => {
 
         <MyTextInput label="Password" name="password" type="password" />
 
-        <button type="submit" className="border p-2 mt-2">
+        <button
+          type="submit"
+          className="rounded mt-4 shadow p-2 px-4 bg-color-bg-darkBlue text-color-bg-ultraLight  hover:shadow-sm hover:bg-color-bg-light hover:text-color-bg-darkBlue
+          transition-colors duration-500"
+        >
           Submit
         </button>
       </Form>
