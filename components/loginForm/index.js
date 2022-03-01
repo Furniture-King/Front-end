@@ -23,27 +23,19 @@ const MyTextInput = ({ label, ...props }) => {
   )
 }
 
-const SignupForm = () => {
+const LogInForm = () => {
   const [signInState, setSignInState] = useState([])
   console.log(signInState)
   return (
     <Formik
-      initialValues={{ firstName: '', lastName: '', email: '', password: '' }}
+      initialValues={{ email: '', password: '' }}
       validationSchema={Yup.object({
-        firstName: Yup.string()
-          .max(15, 'Must be 15 characters or less')
-          .required('Required'),
-        lastName: Yup.string()
-          .max(20, 'Must be 20 characters or less')
-          .required('Required'),
         email: Yup.string().email('Invalid email address').required('Required'),
         password: Yup.string().required('Required')
       })}
       onSubmit={(values, { setSubmitting, resetForm }) => {
         setSignInState(() => [
           {
-            firstName: values.firstName,
-            lastName: values.lastName,
             email: values.email,
             password: values.password
           }
@@ -53,22 +45,7 @@ const SignupForm = () => {
       }}
     >
       <Form className="p-5 flex flex-col">
-        <h1 className="text-center my-2 font-bold uppercase text-3xl">
-          Sign in
-        </h1>
-        <MyTextInput
-          label="Prénom"
-          name="firstName"
-          type="text"
-          placeholder="Jane"
-        />
-
-        <MyTextInput
-          label="Nom"
-          name="lastName"
-          type="text"
-          placeholder="Doe"
-        />
+        <h1 className="text-center my-2 font-bold uppercase text-3xl">Login</h1>
 
         <MyTextInput
           label="Email"
@@ -87,8 +64,8 @@ const SignupForm = () => {
           Soumettre
         </button>
         <div className="mt-3 text-sm underline">
-          <Link href="/logIn">
-            <a>Déjà inscrit ?</a>
+          <Link href="/signUp">
+            <a>Pas encore inscrit ?</a>
           </Link>
         </div>
         <div className="flex flex-col mt-10 justify-between">
@@ -114,4 +91,4 @@ const SignupForm = () => {
   )
 }
 
-export default SignupForm
+export default LogInForm

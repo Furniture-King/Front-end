@@ -3,10 +3,9 @@ import Link from 'next/link'
 
 import MyInput from './MyInput'
 
-import { AiFillLock,AiOutlineLogin } from 'react-icons/ai'
+import { AiFillLock, AiOutlineLogin } from 'react-icons/ai'
 import { MdShoppingCart } from 'react-icons/md'
-import { RiBallPenFill } from "react-icons/ri";
-
+import { RiBallPenFill } from 'react-icons/ri'
 
 const NavBar2 = () => {
   return (
@@ -25,22 +24,18 @@ const NavBar2 = () => {
             <img src="https://i.pravatar.cc/500?img=32" />
           </div>
         </div> */}
-         <Link href="/signUp">
-         <a
-          className="px-3 py-2 flex flex-col items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
-        >
-          <RiBallPenFill />
-          <span>Sign up</span>
-        </a>
-         </Link>
+        <Link href="/signUp">
+          <a className="px-3 py-2 flex flex-col items-center text-xs uppercase font-bold leading-snug hover:opacity-75">
+            <RiBallPenFill />
+            <span>Signin</span>
+          </a>
+        </Link>
         <Link href="/logIn">
-         <a
-          className="px-3 py-2 flex flex-col items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
-        >
-          <AiOutlineLogin />
-          <span>Log in</span>
-        </a>
-         </Link>
+          <a className="px-3 py-2 flex flex-col items-center text-xs uppercase font-bold leading-snug hover:opacity-75">
+            <AiOutlineLogin />
+            <span>Log in</span>
+          </a>
+        </Link>
         <a
           className="px-3 py-2 flex flex-col items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
           href="#"
