@@ -16,6 +16,7 @@ const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 const BigCard = (props) => {
   const { db } = props
   const { state } = useContext(Context)
+  const { addToCart } = useContext(Context)
   const [isShown, setIsShown] = useState(false)
   const [value, setValue] = useState([])
 
@@ -32,6 +33,10 @@ const BigCard = (props) => {
     } else {
       setIsShown(true)
     }
+  }
+
+  const handleClick = () => {
+    addToCart(value.products)
   }
 
   return (
@@ -116,7 +121,10 @@ const BigCard = (props) => {
                     })}
                   </select>
 
-                  <button className="flex items-center border p-1 px-4 bg-color-bg-darkBlue text-color-bg-ultraLight">
+                  <button
+                    onClick={() => handleClick()}
+                    className="flex items-center border p-1 px-4 bg-color-bg-darkBlue text-color-bg-ultraLight"
+                  >
                     <span className="block lg:hidden xl:block">
                       Ajouter au panier
                     </span>

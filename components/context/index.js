@@ -7,6 +7,12 @@ export const Provider = (props) => {
   const [colors, setColors] = useState([])
   const [downPrice, setDownPrice] = useState(0)
   const [upPrice, setUpPrice] = useState(0)
+  const [cart, setCart] = useState([])
+
+  const addToCart = (products) => {
+    setCart((prevState) => [...prevState, { products }])
+    console.log('add to cart context')
+  }
 
   return (
     <Context.Provider
@@ -23,7 +29,10 @@ export const Provider = (props) => {
         downPrice,
         setDownPrice,
         upPrice,
-        setUpPrice
+        setUpPrice,
+        cart,
+        setCart,
+        addToCart
       }}
     />
   )

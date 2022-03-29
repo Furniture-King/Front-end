@@ -25,7 +25,7 @@ const MyTextInput = ({ label, ...props }) => {
 
 const LogInForm = () => {
   const [signInState, setSignInState] = useState([])
-  console.log(signInState)
+  // console.log(signInState)
   return (
     <Formik
       initialValues={{ email: '', password: '' }}

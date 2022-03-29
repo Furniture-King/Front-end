@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import MyInput from './MyInput'
 
-import { AiFillLock, AiOutlineLogin } from 'react-icons/ai'
+import { AiOutlineLogin } from 'react-icons/ai'
 import { MdShoppingCart } from 'react-icons/md'
 import { RiBallPenFill } from 'react-icons/ri'
 
@@ -36,13 +36,12 @@ const NavBar2 = () => {
             <span>Log in</span>
           </a>
         </Link>
-        <a
-          className="px-3 py-2 flex flex-col items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
-          href="#"
-        >
-          <MdShoppingCart />
-          <span className="ml-2">Panier</span>
-        </a>
+        <Link href="/shoppingList">
+          <a className="px-3 py-2 flex flex-col items-center text-xs uppercase font-bold leading-snug hover:opacity-75">
+            <MdShoppingCart />
+            <span className="ml-2">Panier</span>
+          </a>
+        </Link>
       </div>
     </div>
   )
